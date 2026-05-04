@@ -1,0 +1,303 @@
+            "contacts": [
+                {
+                    "email": "health.data@ons.gov.uk",
+                    "name": "Data Insights and Data Science team",
+                    "telephone": "+44 1329 444110"
+                }
+            ],
+            "description": "Provisional counts of the number of deaths registered in England and Wales, by region, in the latest weeks for which data are available.",
+            "keywords": [
+                "Deaths",
+                "weekly deaths"
+            ],
+            "id": "weekly-deaths-region",
+            "last_updated": "2026-04-29T10:10:52.286Z",
+            "links": {
+                "editions": {
+                    "href": "https://api.beta.ons.gov.uk/v1/datasets/weekly-deaths-region/editions"
+                },
+                "latest_version": {
+                    "href": "https://api.beta.ons.gov.uk/v1/datasets/weekly-deaths-region/editions/time-series/versions/114",
+                    "id": "114"
+                },
+                "self": {
+                    "href": "https://api.beta.ons.gov.uk/v1/datasets/weekly-deaths-region"
+                },
+                "taxonomy": {
+                    "href": "https://api.beta.ons.gov.uk/v1/peoplepopulationandcommunity/birthsdeathsandmarriages/deaths"
+                }
+            },
+            "national_statistic": true,
+            "next_release": "8 May 2026",
+            "qmi": {
+                "href": "https://www.ons.gov.uk/peoplepopulationandcommunity/birthsdeathsandmarriages/deaths/methodologies/mortalitystatisticsinenglandandwalesqmi"
+            },
+            "release_frequency": "Weekly",
+            "state": "published",
+            "title": "Deaths registered weekly in England and Wales by region"
+        },
+
+
+
+                    "contacts": [
+                {
+                    "email": "health.data@ons.gov.uk",
+                    "name": "Sarah Caul",
+                    "telephone": "+44 1329 444110"
+                }
+            ],
+            "description": "Provisional counts of the number of deaths registered in Wales, by health board and place of death, in the latest weeks for which data are available.",
+            "keywords": [
+                "Deaths",
+                "weekly deaths"
+            ],
+            "id": "weekly-deaths-health-board",
+            "last_updated": "2024-01-09T10:11:08.441Z",
+            "links": {
+                "editions": {
+                    "href": "https://api.beta.ons.gov.uk/v1/datasets/weekly-deaths-health-board/editions"
+                },
+                "latest_version": {
+                    "href": "https://api.beta.ons.gov.uk/v1/datasets/weekly-deaths-health-board/editions/2023/versions/50",
+                    "id": "50"
+                },
+                "self": {
+                    "href": "https://api.beta.ons.gov.uk/v1/datasets/weekly-deaths-health-board"
+                },
+                "taxonomy": {
+                    "href": "https://api.beta.ons.gov.uk/v1/peoplepopulationandcommunity/birthsdeathsandmarriages/deaths"
+                }
+            },
+            "national_statistic": true,
+            "next_release": "17 January 2024",
+            "qmi": {
+                "href": "https://www.ons.gov.uk/peoplepopulationandcommunity/birthsdeathsandmarriages/deaths/methodologies/mortalitystatisticsinenglandandwalesqmi"
+            },
+            "release_frequency": "Weekly",
+            "state": "published",
+            "title": "Death registrations and occurrences by health board and place of death"
+        },
+
+
+
+
+                    "contacts": [
+                {
+                    "email": "health.data@ons.gov.uk",
+                    "name": "Data Insights and Data Science team",
+                    "telephone": "+44 1329 444110"
+                }
+            ],
+            "description": "Provisional counts of the number of deaths registered in England and Wales, by age and sex, in the latest weeks for which data are available.",
+            "keywords": [
+                "Deaths",
+                "weekly deaths"
+            ],
+            "id": "weekly-deaths-age-sex",
+            "last_updated": "2026-04-29T10:11:01.691Z",
+            "links": {
+                "editions": {
+                    "href": "https://api.beta.ons.gov.uk/v1/datasets/weekly-deaths-age-sex/editions"
+                },
+                "latest_version": {
+                    "href": "https://api.beta.ons.gov.uk/v1/datasets/weekly-deaths-age-sex/editions/2026/versions/14",
+                    "id": "14"
+                },
+                "self": {
+                    "href": "https://api.beta.ons.gov.uk/v1/datasets/weekly-deaths-age-sex"
+                },
+                "taxonomy": {
+                    "href": "https://api.beta.ons.gov.uk/v1/peoplepopulationandcommunity/birthsdeathsandmarriages/deaths"
+                }
+            },
+            "national_statistic": true,
+            "next_release": "8 May 2026",
+            "qmi": {
+                "href": "https://www.ons.gov.uk/peoplepopulationandcommunity/birthsdeathsandmarriages/deaths/methodologies/mortalitystatisticsinenglandandwalesqmi"
+            },
+            "release_frequency": "Weekly",
+            "state": "published",
+            "title": "Deaths registered weekly in England and Wales by age and sex"
+        },
+
+                {
+            "contacts": [
+                {
+                    "email": "pop.info@ons.gov.uk",
+                    "name": "Amanda Sharfman and Pamela Cobb",
+                    "telephone": "+44 (0)1329 444661"
+                }
+            ],
+            "description": "Sexual orientation in the UK from 2012 to 2020 by region.\n\nData source: Annual Population Survey, ONS\n",
+            "keywords": [
+                "gay",
+                "lesbian,bisexual,straight,LGB"
+            ],
+            "id": "sexual-orientation-by-region",
+            "last_updated": "2023-10-18T09:27:23.046Z",
+            "links": {
+                "editions": {
+                    "href": "https://api.beta.ons.gov.uk/v1/datasets/sexual-orientation-by-region/editions"
+                },
+                "latest_version": {
+                    "href": "https://api.beta.ons.gov.uk/v1/datasets/sexual-orientation-by-region/editions/time-series/versions/3",
+                    "id": "3"
+                },
+                "self": {
+                    "href": "https://api.beta.ons.gov.uk/v1/datasets/sexual-orientation-by-region"
+                },
+                "taxonomy": {
+                    "href": "https://api.beta.ons.gov.uk/v1/peoplepopulationandcommunity/culturalidentity/sexuality"
+                }
+            },
+            "national_statistic": false,
+            "next_release": "To be announced",
+            "publications": [
+                {
+                    "href": "https://www.ons.gov.uk/peoplepopulationandcommunity/culturalidentity/sexuality/bulletins/sexualidentityuk/2020",
+                    "title": "Sexual orientation, UK"
+                }
+            ],
+            "qmi": {
+                "href": "https://www.ons.gov.uk/peoplepopulationandcommunity/culturalidentity/sexuality/methodologies/sexualidentityukqmi"
+            },
+            "related_datasets": [
+                {
+                    "href": "https://www.ons.gov.uk/peoplepopulationandcommunity/culturalidentity/sexuality/datasets/sexualidentityuk",
+                    "title": "Sexual orientation, UK, dataset"
+                }
+            ],
+            "release_frequency": "Annual",
+            "state": "published",
+            "title": "Sexual orientation by English regions and UK countries",
+            "unit_of_measure": "Number of people (thousands) and percentage",
+            "type": "filterable"
+        },
+
+
+        {
+            "contacts": [
+                {
+                    "email": "pop.info@ons.gov.uk",
+                    "name": "Amanda Sharfman and Pamela Cobb",
+                    "telephone": "+44 (0)1329 444661"
+                }
+            ],
+            "description": "Sexual orientation in the UK by sex and age, 2014 to 2020.\n\nSource: Annual Population Survey, ONS",
+            "id": "sexual-orientation-by-age-and-sex",
+            "last_updated": "2023-10-18T09:27:20.485Z",
+            "links": {
+                "editions": {
+                    "href": "https://api.beta.ons.gov.uk/v1/datasets/sexual-orientation-by-age-and-sex/editions"
+                },
+                "latest_version": {
+                    "href": "https://api.beta.ons.gov.uk/v1/datasets/sexual-orientation-by-age-and-sex/editions/time-series/versions/3",
+                    "id": "3"
+                },
+                "self": {
+                    "href": "https://api.beta.ons.gov.uk/v1/datasets/sexual-orientation-by-age-and-sex"
+                },
+                "taxonomy": {
+                    "href": "https://api.beta.ons.gov.uk/v1/peoplepopulationandcommunity/culturalidentity/sexuality"
+                }
+            },
+            "national_statistic": false,
+            "next_release": "To be announced",
+            "publications": [
+                {
+                    "href": "https://www.ons.gov.uk/peoplepopulationandcommunity/culturalidentity/sexuality/bulletins/sexualidentityuk/2020",
+                    "title": "Sexual orientation, UK"
+                }
+            ],
+            "qmi": {
+                "href": "https://www.ons.gov.uk/peoplepopulationandcommunity/culturalidentity/sexuality/methodologies/sexualidentityukqmi"
+            },
+            "related_datasets": [
+                {
+                    "href": "https://www.ons.gov.uk/peoplepopulationandcommunity/culturalidentity/sexuality/datasets/sexualidentityuk",
+                    "title": "Sexual orientation, UK dataset"
+                }
+            ],
+            "release_frequency": "Annual",
+            "state": "published",
+            "title": "Sexual orientation by age and sex",
+            "unit_of_measure": "Number of people (thousands) and percentage",
+            "type": "filterable"
+        },
+
+        {
+            "contacts": [
+                {
+                    "email": "pop.info@ons.gov.uk",
+                    "name": "Population Statistics Division",
+                    "telephone": "+44 (0)1329 444661"
+                }
+            ],
+            "description": "Projected indicators included are derived from the published 2018-based subnational population projections for England, Wales, Scotland and Northern Ireland up to the year 2043. The indicators are the projected sex ratio for those aged 65 years and over and the projected sex ratio for those aged 85 years and over. A sex ratio shows the number of males in the population for every 100 females.\n\nThis dataset has been produced by the Ageing Analysis Team for inclusion in the subnational ageing tool, which was published on July 20, 2020 (see link in Related datasets). The tool is interactive, and users can compare latest and projected measures of ageing for up to four different areas through selection on a map or from a drop-down menu. \n\nNote on data sources: England, Wales, Scotland and Northern Ireland independently publish subnational population projections and the data available here are a compilation of these datasets. The ONS publish national level data for the UK, England, Wales and England & Wales, which has been included. National level data for Scotland and Northern Ireland have been taken from their subnational population projections datasets.",
+            "id": "projections-older-people-sex-ratios",
+            "last_updated": "2020-11-02T11:02:21.237Z",
+            "links": {
+                "editions": {
+                    "href": "https://api.beta.ons.gov.uk/v1/datasets/projections-older-people-sex-ratios/editions"
+                },
+                "latest_version": {
+                    "href": "https://api.beta.ons.gov.uk/v1/datasets/projections-older-people-sex-ratios/editions/time-series/versions/1",
+                    "id": "1"
+                },
+                "self": {
+                    "href": "https://api.beta.ons.gov.uk/v1/datasets/projections-older-people-sex-ratios"
+                },
+                "taxonomy": {
+                    "href": "https://api.beta.ons.gov.uk/v1/peoplepopulationandcommunity/birthsdeathsandmarriages/ageing"
+                }
+            },
+            "methodologies": [
+                {
+                    "href": "https://www.nrscotland.gov.uk/files//statistics/population-projections/sub-national-pp-18/pop-proj-principal-18-methodology.pdf",
+                    "title": "Scotland Methodology Guide"
+                },
+                {
+                    "href": "https://gov.wales/population-and-household-statistics-technical-information",
+                    "title": "Wales technical information"
+                },
+                {
+                    "href": "https://www.nisra.gov.uk/sites/nisra.gov.uk/files/publications/SNPP18-Methodology.pdf",
+                    "title": "Northern Ireland methodology paper"
+                }
+            ],
+            "next_release": "To be announced",
+            "qmi": {
+                "href": "https://www.ons.gov.uk/peoplepopulationandcommunity/populationandmigration/populationprojections/methodologies/subnationalpopulationprojectionsqmi"
+            },
+            "related_datasets": [
+                {
+                    "href": "https://www.ons.gov.uk/peoplepopulationandcommunity/populationandmigration/populationprojections/bulletins/subnationalpopulationprojectionsforengland/2018based",
+                    "title": "Subnational population projections for England: 2018-based"
+                },
+                {
+                    "href": "https://www.nrscotland.gov.uk/statistics-and-data/statistics/statistics-by-theme/population/population-projections/sub-national-population-projections/2018-based",
+                    "title": "Population Projections for Scottish Areas (2018-based)"
+                },
+                {
+                    "href": "https://gov.wales/subnational-population-projections-2018-based",
+                    "title": "Wales Subnational population projections (local authority): 2018-based"
+                },
+                {
+                    "href": "https://www.nisra.gov.uk/publications/2018-based-population-projections-areas-within-northern-ireland",
+                    "title": "2018-based Population Projections for Areas within Northern Ireland"
+                },
+                {
+                    "href": "https://www.ons.gov.uk/peoplepopulationandcommunity/birthsdeathsandmarriages/ageing/articles/subnationalageingtool/2020-07-20",
+                    "title": "Subnational ageing tool"
+                }
+            ],
+            "release_frequency": "Biennial",
+            "state": "published",
+            "title": "Local authority ageing statistics, projected sex ratios for older people"
+        }
+    ],
+    "count": 20,
+    "offset": 0,
+    "limit": 20,
+    "total_count": 337
+}

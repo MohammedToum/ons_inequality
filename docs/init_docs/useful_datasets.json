@@ -1,0 +1,312 @@
+            "contacts": [
+                {
+                    "email": "qualityoflife@ons.gov.uk",
+                    "name": "Will Shufflebottom, Owain Birrell, Pavan Bains and Geeta Kerai",
+                    "telephone": "+44 300 0671543"
+                }
+            ],
+            "description": "Seasonally and non seasonally-adjusted quarterly estimates of life satisfaction, feeling that the things done in life are worthwhile, happiness and anxiety in the UK.",
+            "keywords": [
+                "well-being"
+            ],
+            "id": "wellbeing-quarterly",
+            "last_updated": "2023-12-13T09:40:24.204Z",
+            "links": {
+                "editions": {
+                    "href": "https://api.beta.ons.gov.uk/v1/datasets/wellbeing-quarterly/editions"
+                },
+                "latest_version": {
+                    "href": "https://api.beta.ons.gov.uk/v1/datasets/wellbeing-quarterly/editions/time-series/versions/9",
+                    "id": "9"
+                },
+                "self": {
+                    "href": "https://api.beta.ons.gov.uk/v1/datasets/wellbeing-quarterly"
+                },
+                "taxonomy": {
+                    "href": "https://api.beta.ons.gov.uk/v1/peoplepopulationandcommunity/wellbeing"
+                }
+            },
+            "methodologies": [
+                {
+                    "href": "https://www.ons.gov.uk/peoplepopulationandcommunity/wellbeing/methodologies/personalwellbeingquarterlyestimatestechnicalreport",
+                    "title": "Personal well-being quarterly estimates technical report"
+                }
+            ],
+            "national_statistic": false,
+            "next_release": "TBC",
+            "qmi": {
+                "href": "https://www.ons.gov.uk/peoplepopulationandcommunity/wellbeing/methodologies/personalwellbeingintheukqmi"
+            },
+            "related_datasets": [
+                {
+                    "href": "https://www.ons.gov.uk/peoplepopulationandcommunity/wellbeing/datasets/ukmeasuresofnationalwellbeing",
+                    "title": "Personal well-being in the UK"
+                }
+            ],
+            "release_frequency": "Quarterly",
+            "state": "published",
+            "title": "Personal well-being quarterly estimates technical report",
+            "unit_of_measure": "Percentage"
+        },
+
+
+
+
+
+    "contacts": [
+        {
+            "email": "QualityOfLife@ons.gov.uk",
+            "name": "Rachel Mullis, Joe Shepherd and Geeta Kerai",
+            "telephone": "+44 3000 671 543"
+        }
+    ],
+    "description": "Estimates of life satisfaction, feeling that the things done in life are worthwhile, happiness and anxiety at the UK, country, regional, county, local and unitary authority level.",
+    "keywords": [
+        "well-being"
+    ],
+    "id": "wellbeing-local-authority",
+    "last_updated": "2023-12-13T09:40:21.928Z",
+    "links": {
+        "editions": {
+            "href": "https://api.beta.ons.gov.uk/v1/datasets/wellbeing-local-authority/editions"
+        },
+        "latest_version": {
+            "href": "[ ](https://api.beta.ons.gov.uk/v1/datasets/wellbeing-local-authority/editions/time-series/versions/4)",
+            "id": "4"
+        },
+        "self": {
+            "href": "https://api.beta.ons.gov.uk/v1/datasets/wellbeing-local-authority"
+        },
+        "taxonomy": {
+            "href": "https://api.beta.ons.gov.uk/v1/peoplepopulationandcommunity/wellbeing"
+        }
+    },
+    "national_statistic": true,
+    "next_release": "TBC",
+    "qmi": {
+        "href": "https://www.ons.gov.uk/peoplepopulationandcommunity/wellbeing/methodologies/personalwellbeingintheukqmi"
+    },
+    "related_datasets": [
+        {
+            "href": "https://www.ons.gov.uk/peoplepopulationandcommunity/wellbeing/bulletins/measuringnationalwellbeing/april2022tomarch2023",
+            "title": "Personal well-being in the UK: April 2022 to March 2023"
+        }
+    ],
+    "release_frequency": "Annual",
+    "state": "published",
+    "title": "Personal well-being estimates by local authority",
+    "unit_of_measure": "Percentage"
+},
+
+
+
+        {
+    "contacts": [
+        {
+            "email": "realtime.indicators@ons.gov.uk",
+            "name": "Real time indicators team",
+            "telephone": "+44 1633 560344"
+        }
+    ],
+    "description": "These data series are experimental faster indicators for monitoring UK spending using debit and credit cards.",
+    "id": "uk-spending-on-cards",
+    "last_updated": "2024-05-16T09:00:13.637Z",
+    "links": {
+        "editions": {
+            "href": "https://api.beta.ons.gov.uk/v1/datasets/uk-spending-on-cards/editions"
+        },
+        "latest_version": {
+            "href": "https://api.beta.ons.gov.uk/v1/datasets/uk-spending-on-cards/editions/time-series/versions/130",
+            "id": "130"
+        },
+        "self": {
+            "href": "https://api.beta.ons.gov.uk/v1/datasets/uk-spending-on-cards"
+        },
+        "taxonomy": {
+            "href": "https://api.beta.ons.gov.uk/v1/economy/economicoutputandproductivity/productivitymeasures"
+        }
+    },
+    "national_statistic": false,
+    "next_release": "To be announced",
+    "qmi": {
+        "href": "https://www.bankofengland.co.uk/payment-and-settlement/chaps-faster-indicator"
+    },
+    "release_frequency": "Weekly",
+    "state": "published",
+    "title": "UK spending on credit and debit cards",
+    "type": "filterable"
+},
+
+
+        {
+            "contacts": [
+                {
+                    "email": "hie@ons.gov.uk",
+                    "name": "Paula Croal",
+                    "telephone": "01633 651927"
+                }
+            ],
+            "description": "Estimates of mean and median annual incomes in the UK, by quintile groups.\nThe redistribution effects on individuals of direct and indirect taxation and benefits received in cash or kind.",
+            "id": "tax-benefits-statistics",
+            "last_updated": "2022-09-16T06:15:01.401Z",
+            "links": {
+                "editions": {
+                    "href": "https://api.beta.ons.gov.uk/v1/datasets/tax-benefits-statistics/editions"
+                },
+                "latest_version": {
+                    "href": "https://api.beta.ons.gov.uk/v1/datasets/tax-benefits-statistics/editions/time-series/versions/3",
+                    "id": "3"
+                },
+                "self": {
+                    "href": "https://api.beta.ons.gov.uk/v1/datasets/tax-benefits-statistics"
+                },
+                "taxonomy": {
+                    "href": "https://api.beta.ons.gov.uk/v1/economy/governmentpublicsectorandtaxes/taxesandrevenue"
+                }
+            },
+            "next_release": "TBA",
+            "qmi": {
+                "href": "https://www.ons.gov.uk/peoplepopulationandcommunity/personalandhouseholdfinances/incomeandwealth/methodologies/theeffectsoftaxesandbenefitsonukhouseholdincome"
+            },
+            "release_frequency": "Annual",
+            "state": "published",
+            "title": "Effects of Taxes and Benefits on Household Income"
+        },
+
+
+                {
+            "contacts": [
+                {
+                    "email": "health.data@ons.gov.uk",
+                    "name": "Population Health Monitoring Group",
+                    "telephone": "+44 1633 456501"
+                }
+            ],
+            "description": "Number of suicides by local authority in England and Wales, registered from 2001.\n\nIf you are struggling to cope, please call Samaritans for free on 116 123 (UK and ROI) or contact other sources of support, such as those listed on the NHS’s help for suicidal thoughts webpage. Support is available round the clock, every single day of the year, providing a safe place for anyone struggling to cope, whoever they are, however they feel, whatever life has done to them.",
+            "keywords": [
+                "suicide",
+                "mortality"
+            ],
+            "id": "suicides-in-the-uk",
+            "last_updated": "2024-09-05T12:10:34.352Z",
+            "links": {
+                "editions": {
+                    "href": "https://api.beta.ons.gov.uk/v1/datasets/suicides-in-the-uk/editions"
+                },
+                "latest_version": {
+                    "href": "https://api.beta.ons.gov.uk/v1/datasets/suicides-in-the-uk/editions/2023/versions/1",
+                    "id": "1"
+                },
+                "self": {
+                    "href": "https://api.beta.ons.gov.uk/v1/datasets/suicides-in-the-uk"
+                },
+                "taxonomy": {
+                    "href": "https://api.beta.ons.gov.uk/v1/peoplepopulationandcommunity/birthsdeathsandmarriages/deaths"
+                }
+            },
+            "methodologies": [
+                {
+                    "href": "https://www.samaritans.org/",
+                    "title": "Samaritans"
+                },
+                {
+                    "href": "https://www.nhs.uk/mental-health/feelings-symptoms-behaviours/behaviours/help-for-suicidal-thoughts/",
+                    "title": "Help for suicidal thoughts"
+                }
+            ],
+            "national_statistic": true,
+            "next_release": "To be announced",
+            "qmi": {
+                "href": "https://www.ons.gov.uk/peoplepopulationandcommunity/birthsdeathsandmarriages/deaths/methodologies/suicideratesintheukqmi"
+            },
+            "related_datasets": [
+                {
+                    "href": "https://www.ons.gov.uk/peoplepopulationandcommunity/birthsdeathsandmarriages/deaths/bulletins/suicidesintheunitedkingdom/latest",
+                    "title": "Suicides in England and Wales"
+                }
+            ],
+            "release_frequency": "Annually",
+            "state": "published",
+            "title": "Suicide registrations in England and Wales by local authority"
+        },
+
+
+
+                {
+            "contacts": [
+                {
+                    "email": "regionalgdp@ons.gov.uk",
+                    "name": "Keith Barnes",
+                    "telephone": "+441633 456630"
+                }
+            ],
+            "description": "Annual economic activity within England, Wales and the nine English regions (North East, North West, Yorkshire and the Humber, East Midlands, West Midlands, East of England, Greater London, South East, South West).",
+            "keywords": [
+                "regional GDP"
+            ],
+            "id": "regional-gdp-by-year",
+            "last_updated": "2023-05-24T08:36:20.126Z",
+            "links": {
+                "editions": {
+                    "href": "https://api.beta.ons.gov.uk/v1/datasets/regional-gdp-by-year/editions"
+                },
+                "latest_version": {
+                    "href": "https://api.beta.ons.gov.uk/v1/datasets/regional-gdp-by-year/editions/time-series/versions/6",
+                    "id": "6"
+                },
+                "self": {
+                    "href": "https://api.beta.ons.gov.uk/v1/datasets/regional-gdp-by-year"
+                },
+                "taxonomy": {
+                    "href": "https://api.beta.ons.gov.uk/v1/economy/grossdomesticproductgdp"
+                }
+            },
+            "national_statistic": false,
+            "next_release": "TBA",
+            "qmi": {
+                "href": "https://www.ons.gov.uk/economy/grossdomesticproductgdp/methodologies/grossdomesticproductgdpukregionsandcountriesqmi"
+            },
+            "release_frequency": "Annual",
+            "state": "published",
+            "title": "Annual GDP for England, Wales and the English r. b6t5"
+
+
+
+        {
+            "contacts": [
+                {
+                    "email": "regionalgdp@ons.gov.uk",
+                    "name": "Keith Barnes",
+                    "telephone": "+441633 456630"
+                }
+            ],
+            "description": "Quarterly economic activity within England, Wales and the nine English regions (North East, North West, Yorkshire and The Humber, East Midlands, West Midlands, East of England, London, South East, South West).",
+            "keywords": [
+                "regional GDP"
+            ],
+            "id": "regional-gdp-by-quarter",
+            "last_updated": "2023-05-24T08:36:17.711Z",
+            "links": {
+                "editions": {
+                    "href": "https://api.beta.ons.gov.uk/v1/datasets/regional-gdp-by-quarter/editions"
+                },
+                "latest_version": {
+                    "href": "https://api.beta.ons.gov.uk/v1/datasets/regional-gdp-by-quarter/editions/time-series/versions/6",
+                    "id": "6"
+                },
+                "self": {
+                    "href": "https://api.beta.ons.gov.uk/v1/datasets/regional-gdp-by-quarter"
+                },
+                "taxonomy": {
+                    "href": "https://api.beta.ons.gov.uk/v1/economy/grossdomesticproductgdp"
+                }
+            },
+            "national_statistic": false,
+            "next_release": "To be announced",
+            "qmi": {
+                "href": "https://www.ons.gov.uk/economy/grossdomesticproductgdp/methodologies/grossdomesticproductgdpukregionsandcountriesqmi"
+            },
+            "release_frequency": "To be announced",
+            "state": "published",
+            "title": "Quarterly GDP for England, Wales and the English regions"
+        },
