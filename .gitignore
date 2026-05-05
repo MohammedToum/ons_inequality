@@ -1,2 +1,2 @@
-scrap_docs/*
 /.venv
+/docs/dev_notes/*

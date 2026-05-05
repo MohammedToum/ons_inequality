@@ -1,0 +1,13 @@
+personal well-being by quarterly estimates (L: 2023-12-13l sched: quarterly, nat: no)
+
+personal well being estimate by local authority (L: 2023-12-13, sched annual, nat: yes)
+
+uk spending on credit cards (L: 2024-05-16, weekly, nat: no)
+
+mean incomes in the uk by quintile groups (L: 2022-09-16, annual)
+
+number of suicides by local authority (L: 2024-09-05, sched:unknown, nat: true)
+
+regional GDP (L: 2023-05-04, sched: annual, nat: false)
+
+quarterly GDP by region (L: 2023-05-24, sched: quarterly, nat: true)
