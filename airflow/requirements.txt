@@ -1,0 +1,6 @@
+httpx
+tenacity
+PyYAML
+google-cloud-storage
+google-cloud-bigquery
+dbt-bigquery
