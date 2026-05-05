@@ -1,0 +1,108 @@
+{
+  "alerts": [],
+  "collection_id": "cmdtaxbenefitstatistics-be500792c57631f789dcffff525687343cec49eb496b14651a058c8f556d2721",
+  "dimensions": [
+    {
+      "label": "Time",
+      "links": {
+        "code_list": {},
+        "options": {},
+        "version": {}
+      },
+      "href": "https://api.beta.ons.gov.uk/v1/code-lists/financial-and-calendar-years",
+      "id": "financial-and-calendar-years",
+      "name": "time"
+    },
+    {
+      "label": "Geography",
+      "links": {
+        "code_list": {},
+        "options": {},
+        "version": {}
+      },
+      "href": "https://api.beta.ons.gov.uk/v1/code-lists/uk-only",
+      "id": "uk-only",
+      "name": "geography"
+    },
+    {
+      "label": "Quintile",
+      "links": {
+        "code_list": {},
+        "options": {},
+        "version": {}
+      },
+      "href": "https://api.beta.ons.gov.uk/v1/code-lists/quintile",
+      "id": "quintile",
+      "name": "quintile"
+    },
+    {
+      "label": "Statistics",
+      "links": {
+        "code_list": {},
+        "options": {},
+        "version": {}
+      },
+      "href": "https://api.beta.ons.gov.uk/v1/code-lists/averages-and-percentiles",
+      "id": "averages-and-percentiles",
+      "name": "averagesandpercentiles"
+    },
+    {
+      "label": "Income type",
+      "links": {
+        "code_list": {},
+        "options": {},
+        "version": {}
+      },
+      "href": "https://api.beta.ons.gov.uk/v1/code-lists/income-type",
+      "id": "income-type",
+      "name": "income"
+    },
+    {
+      "label": "Deflation status",
+      "links": {
+        "code_list": {},
+        "options": {},
+        "version": {}
+      },
+      "href": "https://api.beta.ons.gov.uk/v1/code-lists/value-deflation",
+      "id": "value-deflation",
+      "name": "deflation"
+    }
+  ],
+  "downloads": {
+    "xls": {
+      "href": "https://download.ons.gov.uk/downloads/datasets/tax-benefits-statistics/editions/time-series/versions/3.xlsx",
+      "size": "39536"
+    },
+    "csv": {
+      "href": "https://download.ons.gov.uk/downloads/datasets/tax-benefits-statistics/editions/time-series/versions/3.csv",
+      "size": "596024"
+    },
+    "csvw": {
+      "href": "https://download.ons.gov.uk/downloads/datasets/tax-benefits-statistics/editions/time-series/versions/3.csv-metadata.json",
+      "size": "2002"
+    }
+  },
+  "edition": "time-series",
+  "id": "6866abbd-95a1-4710-bbb8-fc1eba47f604",
+  "last_updated": "2022-09-15T12:54:25.961Z",
+  "links": {
+    "dataset": {
+      "href": "https://api.beta.ons.gov.uk/v1/datasets/tax-benefits-statistics",
+      "id": "tax-benefits-statistics"
+    },
+    "dimensions": {},
+    "edition": {
+      "href": "https://api.beta.ons.gov.uk/v1/datasets/tax-benefits-statistics/editions/time-series",
+      "id": "time-series"
+    },
+    "self": {
+      "href": "https://api.beta.ons.gov.uk/v1/datasets/tax-benefits-statistics/editions/time-series/versions/3"
+    }
+  },
+  "release_date": "2022-09-09T00:00:00.000Z",
+  "state": "published",
+  "usage_notes": [],
+  "version": 3,
+  "type": "v4"
+}

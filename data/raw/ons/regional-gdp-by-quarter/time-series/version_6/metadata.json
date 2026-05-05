@@ -1,0 +1,98 @@
+{
+  "alerts": [],
+  "collection_id": "cmdregionalgdpbyquarter-a32fea0d69e259e2f327b327f8ba80e49694267e1768286de5e69158cadc4f07",
+  "dimensions": [
+    {
+      "label": "Time",
+      "links": {
+        "code_list": {},
+        "options": {},
+        "version": {}
+      },
+      "href": "https://api.beta.ons.gov.uk/v1/code-lists/yyyy-qq",
+      "id": "yyyy-qq",
+      "name": "time"
+    },
+    {
+      "label": "Geography",
+      "links": {
+        "code_list": {},
+        "options": {},
+        "version": {}
+      },
+      "href": "https://api.beta.ons.gov.uk/v1/code-lists/nuts",
+      "id": "nuts",
+      "name": "geography"
+    },
+    {
+      "label": "Standard Industrial Classification",
+      "links": {
+        "code_list": {},
+        "options": {},
+        "version": {}
+      },
+      "href": "https://api.beta.ons.gov.uk/v1/code-lists/sic-unofficial",
+      "id": "sic-unofficial",
+      "name": "unofficialstandardindustrialclassification"
+    },
+    {
+      "label": "Prices",
+      "links": {
+        "code_list": {},
+        "options": {},
+        "version": {}
+      },
+      "href": "https://api.beta.ons.gov.uk/v1/code-lists/type-of-prices",
+      "id": "type-of-prices",
+      "name": "prices"
+    },
+    {
+      "label": "Measure",
+      "links": {
+        "code_list": {},
+        "options": {},
+        "version": {}
+      },
+      "href": "https://api.beta.ons.gov.uk/v1/code-lists/quarterly-index-and-growth-rate",
+      "id": "quarterly-index-and-growth-rate",
+      "name": "growthrate"
+    }
+  ],
+  "downloads": {
+    "xls": {
+      "href": "https://download.ons.gov.uk/downloads/datasets/regional-gdp-by-quarter/editions/time-series/versions/6.xlsx",
+      "size": "317071"
+    },
+    "csv": {
+      "href": "https://download.ons.gov.uk/downloads/datasets/regional-gdp-by-quarter/editions/time-series/versions/6.csv",
+      "size": "5344130"
+    },
+    "csvw": {
+      "href": "https://download.ons.gov.uk/downloads/datasets/regional-gdp-by-quarter/editions/time-series/versions/6.csv-metadata.json",
+      "size": "1890"
+    }
+  },
+  "edition": "time-series",
+  "id": "5f03934b-9e75-4efe-98ea-c957465bfc82",
+  "last_updated": "2023-05-24T08:34:45.416Z",
+  "latest_changes": [],
+  "links": {
+    "dataset": {
+      "href": "https://api.beta.ons.gov.uk/v1/datasets/regional-gdp-by-quarter",
+      "id": "regional-gdp-by-quarter"
+    },
+    "dimensions": {},
+    "edition": {
+      "href": "https://api.beta.ons.gov.uk/v1/datasets/regional-gdp-by-quarter/editions/time-series",
+      "id": "time-series"
+    },
+    "self": {
+      "href": "https://api.beta.ons.gov.uk/v1/datasets/regional-gdp-by-quarter/editions/time-series/versions/6"
+    }
+  },
+  "release_date": "2023-05-18T00:00:00.000Z",
+  "state": "published",
+  "usage_notes": [],
+  "version": 6,
+  "type": "v4"
+}

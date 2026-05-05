@@ -1,0 +1,87 @@
+{
+  "@context": "http://www.w3.org/ns/csvw",
+  "url": "https://download.ons.gov.uk/downloads/datasets/tax-benefits-statistics/editions/time-series/versions/3.csv",
+  "dct:title": "Effects of Taxes and Benefits on Household Income",
+  "dct:description": "Estimates of mean and median annual incomes in the UK, by quintile groups.\nThe redistribution effects on individuals of direct and indirect taxation and benefits received in cash or kind.",
+  "dct:issued": "2022-09-09T00:00:00.000Z",
+  "dct:publisher": {
+    "@id": ""
+  },
+  "dcat:contactPoint": [
+    {
+      "vcard:fn": "Paula Croal",
+      "vcard:tel": "01633 651927",
+      "vcard:email": "hie@ons.gov.uk"
+    }
+  ],
+  "tableSchema": {
+    "columns": [
+      {
+        "datatype": "string",
+        "titles": "v4_0"
+      },
+      {
+        "name": "financial-and-calendar-years",
+        "required": true,
+        "valueURL": "https://api.ons.gov.uk/v1/v1/code-lists/financial-and-calendar-years/codes/{financial-and-calendar-years}"
+      },
+      {
+        "description": "",
+        "name": "Time",
+        "titles": "time"
+      },
+      {
+        "name": "uk-only",
+        "required": true,
+        "valueURL": "https://api.ons.gov.uk/v1/v1/code-lists/uk-only/codes/{uk-only}"
+      },
+      {
+        "description": "",
+        "name": "Geography",
+        "titles": "geography"
+      },
+      {
+        "name": "quintile",
+        "required": true,
+        "valueURL": "https://api.ons.gov.uk/v1/v1/code-lists/quintile/codes/{quintile}"
+      },
+      {
+        "description": "",
+        "name": "Quintile",
+        "titles": "quintile"
+      },
+      {
+        "name": "averages-and-percentiles",
+        "required": true,
+        "valueURL": "https://api.ons.gov.uk/v1/v1/code-lists/averages-and-percentiles/codes/{averages-and-percentiles}"
+      },
+      {
+        "description": "",
+        "name": "Statistics",
+        "titles": "averagesandpercentiles"
+      },
+      {
+        "name": "income-type",
+        "required": true,
+        "valueURL": "https://api.ons.gov.uk/v1/v1/code-lists/income-type/codes/{income-type}"
+      },
+      {
+        "description": "",
+        "name": "Income type",
+        "titles": "income"
+      },
+      {
+        "name": "value-deflation",
+        "required": true,
+        "valueURL": "https://api.ons.gov.uk/v1/v1/code-lists/value-deflation/codes/{value-deflation}"
+      },
+      {
+        "description": "",
+        "name": "Deflation status",
+        "titles": "deflation"
+      }
+    ],
+    "aboutUrl": "https://api.ons.gov.uk/v1/datasets/tax-benefits-statistics/editions/time-series/versions/3/metadata"
+  },
+  "dct:accrualPeriodicity": "Annual"
+}

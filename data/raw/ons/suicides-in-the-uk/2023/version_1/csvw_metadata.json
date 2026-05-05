@@ -1,0 +1,47 @@
+{
+  "@context": "http://www.w3.org/ns/csvw",
+  "url": "https://download.ons.gov.uk/downloads/datasets/suicides-in-the-uk/editions/2023/versions/1.csv",
+  "dct:title": "Suicide registrations in England and Wales by local authority",
+  "dct:description": "Number of suicides by local authority in England and Wales, registered from 2001.\n\nIf you are struggling to cope, please call Samaritans for free on 116 123 (UK and ROI) or contact other sources of support, such as those listed on the NHS’s help for suicidal thoughts webpage. Support is available round the clock, every single day of the year, providing a safe place for anyone struggling to cope, whoever they are, however they feel, whatever life has done to them.",
+  "dct:issued": "2024-08-29T00:00:00.000Z",
+  "dct:publisher": {
+    "@id": ""
+  },
+  "dcat:contactPoint": [
+    {
+      "vcard:fn": "Population Health Monitoring Group",
+      "vcard:tel": "+44 1633 456501",
+      "vcard:email": "health.data@ons.gov.uk"
+    }
+  ],
+  "tableSchema": {
+    "columns": [
+      {
+        "datatype": "string",
+        "titles": "v4_0"
+      },
+      {
+        "name": "calendar-years",
+        "required": true,
+        "valueURL": "https://api.ons.gov.uk/v1/v1/code-lists/calendar-years/codes/{calendar-years}"
+      },
+      {
+        "description": "",
+        "name": "Time",
+        "titles": "time"
+      },
+      {
+        "name": "administrative-geography",
+        "required": true,
+        "valueURL": "https://api.ons.gov.uk/v1/v1/code-lists/administrative-geography/codes/{administrative-geography}"
+      },
+      {
+        "description": "",
+        "name": "Geography",
+        "titles": "geography"
+      }
+    ],
+    "aboutUrl": "https://api.ons.gov.uk/v1/datasets/suicides-in-the-uk/editions/2023/versions/1/metadata"
+  },
+  "dct:accrualPeriodicity": "Annually"
+}

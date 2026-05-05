@@ -12,6 +12,9 @@ class ONSNotFoundError(ONSAPIError):
     """Raised when a requested ONS resource does not exist (HTTP 404)."""
 
 
+class ONSRateLimitError(ONSAPIError):
+    """Raised when ONS rate limits the request (HTTP 429)."""
+
 class ONSClient:
     """
     Thin HTTP client for interacting with the ONS Beta API.
@@ -45,11 +48,12 @@ class ONSClient:
 
     @retry(
         stop=stop_after_attempt(3),
-        wait=wait_exponential(multiplier=1, min=1, max=8),
+        wait=wait_exponential(multiplier=2, min=2, max=30),
         # Only retry on network-related failures, not bad responses (e.g. 400/404)
         retry=retry_if_exception_type((httpx.TimeoutException, httpx.TransportError)),
         reraise=True,
     )
+
     def get_json(
         self,
         endpoint_or_url: str,
@@ -68,9 +72,11 @@ class ONSClient:
     @retry(
         stop=stop_after_attempt(3),
         wait=wait_exponential(multiplier=1, min=1, max=8),
-        retry=retry_if_exception_type((httpx.TimeoutException, httpx.TransportError)),
+        retry=retry_if_exception_type((httpx.TimeoutException, httpx.TransportError, ONSRateLimitError)),
         reraise=True,
     )
+
+    
     def get_bytes(self, endpoint_or_url: str) -> bytes:
         """
         Perform a GET request and return raw bytes.
@@ -177,6 +183,11 @@ class ONSClient:
         # Explicit handling for 404 to allow upstream logic to react accordingly
         if response.status_code == 404:
             raise ONSNotFoundError(f"ONS resource not found: {url}")
+
+        # Explicit handling for 429 to allow upstream logic to react accordingly
+        if response.status_code == 429:
+            raise ONSRateLimitError(f"ONS rate limit exceeded: {url}")
+
 
         try:
             response.raise_for_status()

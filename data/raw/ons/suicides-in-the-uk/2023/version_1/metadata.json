@@ -1,0 +1,65 @@
+{
+  "alerts": [],
+  "collection_id": "cmdsuicides-450433cb3341dca60a6bf840e19cc6215f22f960e0f436bd62343a8fe92ae425",
+  "dimensions": [
+    {
+      "label": "Time",
+      "links": {
+        "code_list": {},
+        "options": {},
+        "version": {}
+      },
+      "href": "https://api.beta.ons.gov.uk/v1/code-lists/calendar-years",
+      "id": "calendar-years",
+      "name": "time"
+    },
+    {
+      "label": "Geography",
+      "links": {
+        "code_list": {},
+        "options": {},
+        "version": {}
+      },
+      "href": "https://api.beta.ons.gov.uk/v1/code-lists/administrative-geography",
+      "id": "administrative-geography",
+      "name": "geography"
+    }
+  ],
+  "downloads": {
+    "xls": {
+      "href": "https://download.ons.gov.uk/downloads/datasets/suicides-in-the-uk/editions/2023/versions/1.xlsx",
+      "size": "45086"
+    },
+    "csv": {
+      "href": "https://download.ons.gov.uk/downloads/datasets/suicides-in-the-uk/editions/2023/versions/1.csv",
+      "size": "296639"
+    },
+    "csvw": {
+      "href": "https://download.ons.gov.uk/downloads/datasets/suicides-in-the-uk/editions/2023/versions/1.csv-metadata.json",
+      "size": "1526"
+    }
+  },
+  "edition": "2023",
+  "id": "a9b2a721-01ba-4e77-9e27-4993601c4b51",
+  "last_updated": "2024-08-29T09:13:24.839Z",
+  "latest_changes": [],
+  "links": {
+    "dataset": {
+      "href": "https://api.beta.ons.gov.uk/v1/datasets/suicides-in-the-uk",
+      "id": "suicides-in-the-uk"
+    },
+    "dimensions": {},
+    "edition": {
+      "href": "https://api.beta.ons.gov.uk/v1/datasets/suicides-in-the-uk/editions/2023",
+      "id": "2023"
+    },
+    "self": {
+      "href": "https://api.beta.ons.gov.uk/v1/datasets/suicides-in-the-uk/editions/2023/versions/1"
+    }
+  },
+  "release_date": "2024-08-29T00:00:00.000Z",
+  "state": "published",
+  "usage_notes": [],
+  "version": 1,
+  "type": "v4"
+}

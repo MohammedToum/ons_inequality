@@ -1,0 +1,84 @@
+{
+  "@context": "http://www.w3.org/ns/csvw",
+  "url": "https://download.ons.gov.uk/downloads/datasets/wellbeing-quarterly/editions/time-series/versions/9.csv",
+  "dct:title": "Quarterly personal well-being estimates",
+  "dct:description": "Seasonally and non seasonally-adjusted quarterly estimates of life satisfaction, feeling that the things done in life are worthwhile, happiness and anxiety in the UK.",
+  "dct:issued": "2023-11-28T00:00:00.000Z",
+  "dct:publisher": {
+    "@id": ""
+  },
+  "dcat:contactPoint": [
+    {
+      "vcard:fn": "Will Shufflebottom, Owain Birrell, Pavan Bains and Geeta Kerai",
+      "vcard:tel": "+44 300 0671543",
+      "vcard:email": "qualityoflife@ons.gov.uk"
+    }
+  ],
+  "tableSchema": {
+    "columns": [
+      {
+        "datatype": "string",
+        "name": "Percentage",
+        "titles": "v4_2"
+      },
+      {
+        "titles": "LCL"
+      },
+      {
+        "titles": "UCL"
+      },
+      {
+        "name": "yyyy-qq",
+        "required": true,
+        "valueURL": "https://api.ons.gov.uk/v1/v1/code-lists/yyyy-qq/codes/{yyyy-qq}"
+      },
+      {
+        "description": "",
+        "name": "Time",
+        "titles": "time"
+      },
+      {
+        "name": "uk-only",
+        "required": true,
+        "valueURL": "https://api.ons.gov.uk/v1/v1/code-lists/uk-only/codes/{uk-only}"
+      },
+      {
+        "description": "",
+        "name": "Geography",
+        "titles": "geography"
+      },
+      {
+        "name": "measure-of-wellbeing",
+        "required": true,
+        "valueURL": "https://api.ons.gov.uk/v1/v1/code-lists/measure-of-wellbeing/codes/{measure-of-wellbeing}"
+      },
+      {
+        "description": "",
+        "name": "All measures of well-being",
+        "titles": "measureofwellbeing"
+      },
+      {
+        "name": "wellbeing-estimate",
+        "required": true,
+        "valueURL": "https://api.ons.gov.uk/v1/v1/code-lists/wellbeing-estimate/codes/{wellbeing-estimate}"
+      },
+      {
+        "description": "The well-being thresholds in this dataset are different to the standard well-being thresholds that are published as part of this release. This is because the data for the anxiety measure needs to be interpreted differently to the other three well-being measures. For example, high happiness scores relate to a positive well-being, while high anxiety scores relate to a poor well-being.\n\nThe well-being thresholds used in this dataset map onto the thresholds used in the main publication in the following way:\n\n- Poor = Low levels of life satisfaction, worthwhile, happiness and high levels of anxiety.\n- Fair = Medium levels of life satisfaction, worthwhile, happiness and anxiety.\n- Good = High levels of life satisfaction, worthwhile, happiness and low levels of anxiety.\n- Very good = Very high levels of life satisfaction, worthwhile, happiness and very low levels of anxiety.",
+        "name": "Estimate",
+        "titles": "estimate"
+      },
+      {
+        "name": "seasonal-adjustment",
+        "required": true,
+        "valueURL": "https://api.ons.gov.uk/v1/v1/code-lists/seasonal-adjustment/codes/{seasonal-adjustment}"
+      },
+      {
+        "description": "",
+        "name": "Seasonal adjustment",
+        "titles": "seasonaladjustment"
+      }
+    ],
+    "aboutUrl": "https://api.ons.gov.uk/v1/datasets/wellbeing-quarterly/editions/time-series/versions/9/metadata"
+  },
+  "dct:accrualPeriodicity": "Quarterly"
+}

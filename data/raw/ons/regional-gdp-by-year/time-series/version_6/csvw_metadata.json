@@ -1,0 +1,80 @@
+{
+  "@context": "http://www.w3.org/ns/csvw",
+  "url": "https://download.ons.gov.uk/downloads/datasets/regional-gdp-by-year/editions/time-series/versions/6.csv",
+  "dct:title": "Annual GDP for England, Wales and the English regions",
+  "dct:description": "Annual economic activity within England, Wales and the nine English regions (North East, North West, Yorkshire and the Humber, East Midlands, West Midlands, East of England, Greater London, South East, South West).",
+  "dct:issued": "2023-05-18T00:00:00.000Z",
+  "dct:publisher": {
+    "@id": ""
+  },
+  "dcat:contactPoint": [
+    {
+      "vcard:fn": "Keith Barnes",
+      "vcard:tel": "+441633 456630",
+      "vcard:email": "regionalgdp@ons.gov.uk"
+    }
+  ],
+  "tableSchema": {
+    "columns": [
+      {
+        "datatype": "string",
+        "titles": "v4_1"
+      },
+      {
+        "titles": "Data Marking"
+      },
+      {
+        "name": "calendar-years",
+        "required": true,
+        "valueURL": "https://api.ons.gov.uk/v1/v1/code-lists/calendar-years/codes/{calendar-years}"
+      },
+      {
+        "description": "",
+        "name": "Time",
+        "titles": "time"
+      },
+      {
+        "name": "nuts",
+        "required": true,
+        "valueURL": "https://api.ons.gov.uk/v1/v1/code-lists/nuts/codes/{nuts}"
+      },
+      {
+        "description": "",
+        "name": "Geography",
+        "titles": "geography"
+      },
+      {
+        "name": "sic-unofficial",
+        "required": true,
+        "valueURL": "https://api.ons.gov.uk/v1/v1/code-lists/sic-unofficial/codes/{sic-unofficial}"
+      },
+      {
+        "description": "",
+        "name": "Standard Industrial Classification",
+        "titles": "unofficialstandardindustrialclassification"
+      },
+      {
+        "name": "type-of-prices",
+        "required": true,
+        "valueURL": "https://api.ons.gov.uk/v1/v1/code-lists/type-of-prices/codes/{type-of-prices}"
+      },
+      {
+        "description": "",
+        "name": "Prices",
+        "titles": "prices"
+      },
+      {
+        "name": "quarterly-index-and-growth-rate",
+        "required": true,
+        "valueURL": "https://api.ons.gov.uk/v1/v1/code-lists/quarterly-index-and-growth-rate/codes/{quarterly-index-and-growth-rate}"
+      },
+      {
+        "description": "",
+        "name": "Measure",
+        "titles": "growthrate"
+      }
+    ],
+    "aboutUrl": "https://api.ons.gov.uk/v1/datasets/regional-gdp-by-year/editions/time-series/versions/6/metadata"
+  },
+  "dct:accrualPeriodicity": "Annual"
+}

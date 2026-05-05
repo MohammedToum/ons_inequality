@@ -1,0 +1,49 @@
+datasets:
+  - dataset_id: wellbeing-quarterly
+    edition: time-series
+    version: latest
+    enabled: true
+    raw_table_name: raw_wellbeing_quarterly
+    description: >
+      Quarterly UK personal well-being estimates including life satisfaction,
+      happiness, anxiety, and sense of worthwhileness.
+
+  - dataset_id: wellbeing-local-authority
+    edition: time-series
+    version: latest
+    enabled: true
+    raw_table_name: raw_wellbeing_local_authority
+    description: >
+      Annual personal well-being estimates at local authority level across the UK.
+
+  - dataset_id: tax-benefits-statistics
+    edition: time-series
+    version: latest
+    enabled: true
+    raw_table_name: raw_tax_benefits
+    description: >
+      Mean and median income by quintile, including redistribution effects of taxes and benefits.
+
+  - dataset_id: suicides-in-the-uk
+    edition: "2023"
+    version: 1
+    enabled: true
+    raw_table_name: raw_suicides
+    description: >
+      Number of suicides by local authority in England and Wales from 2001 onwards.
+
+  - dataset_id: regional-gdp-by-year
+    edition: time-series
+    version: latest
+    enabled: true
+    raw_table_name: raw_regional_gdp_year
+    description: >
+      Annual GDP estimates for UK regions including England, Wales, and English regions.
+
+  - dataset_id: regional-gdp-by-quarter
+    edition: time-series
+    version: latest
+    enabled: true
+    raw_table_name: raw_regional_gdp_quarter
+    description: >
+      Quarterly GDP estimates for UK regions including England, Wales, and English regions.

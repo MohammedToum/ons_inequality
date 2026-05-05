@@ -1,0 +1,93 @@
+{
+  "alerts": [],
+  "collection_id": "cmdwellbeingbylocalauthority-5fe38bf7e03d1627b75f21d32d1805c8d8ad380e3f321edea424e2914dd30528",
+  "dimensions": [
+    {
+      "label": "Time",
+      "links": {
+        "code_list": {},
+        "options": {},
+        "version": {}
+      },
+      "href": "https://api.beta.ons.gov.uk/v1/code-lists/yyyy-yy",
+      "id": "yyyy-yy",
+      "name": "time"
+    },
+    {
+      "description": "Geographic areas are updated regularly where new unitary authorities may be created and replace existing local authorities. For more information see the \"Notes\" tab within the main dataset.",
+      "label": "Geography",
+      "links": {
+        "code_list": {},
+        "options": {},
+        "version": {}
+      },
+      "href": "https://api.beta.ons.gov.uk/v1/code-lists/administrative-geography",
+      "id": "administrative-geography",
+      "name": "geography"
+    },
+    {
+      "description": "The well-being thresholds in this dataset are different to the standard well-being thresholds that are published as part of this release. This is because the data for the anxiety measure needs to be interpreted differently to the other three well-being measures. For example, high happiness scores relate to a positive well-being, while high anxiety scores relate to a poor well-being.\n\nThe well-being thresholds used in this dataset map onto the thresholds used in the main publication in the following way:\n\n- Poor = Low levels of life satisfaction, worthwhile, happiness and high levels of anxiety.\n- Fair = Medium levels of life satisfaction, worthwhile, happiness and anxiety.\n- Good = High levels of life satisfaction, worthwhile, happiness and low levels of anxiety.\n- Very good = Very high levels of life satisfaction, worthwhile, happiness and very low levels of anxiety.",
+      "label": "Estimate",
+      "links": {
+        "code_list": {},
+        "options": {},
+        "version": {}
+      },
+      "href": "https://api.beta.ons.gov.uk/v1/code-lists/wellbeing-estimate",
+      "id": "wellbeing-estimate",
+      "name": "estimate"
+    },
+    {
+      "label": "All measures of well-being",
+      "links": {
+        "code_list": {},
+        "options": {},
+        "version": {}
+      },
+      "href": "https://api.beta.ons.gov.uk/v1/code-lists/measure-of-wellbeing",
+      "id": "measure-of-wellbeing",
+      "name": "measureofwellbeing"
+    }
+  ],
+  "downloads": {
+    "xls": {
+      "href": "https://download.ons.gov.uk/downloads/datasets/wellbeing-local-authority/editions/time-series/versions/4.xlsx",
+      "size": "2250646"
+    },
+    "csv": {
+      "href": "https://download.ons.gov.uk/downloads/datasets/wellbeing-local-authority/editions/time-series/versions/4.csv",
+      "size": "9515176"
+    },
+    "csvw": {
+      "href": "https://download.ons.gov.uk/downloads/datasets/wellbeing-local-authority/editions/time-series/versions/4.csv-metadata.json",
+      "size": "3542"
+    }
+  },
+  "edition": "time-series",
+  "id": "321b3476-73e5-49d6-af2d-2408f7bfa082",
+  "last_updated": "2023-12-11T10:09:53.673Z",
+  "latest_changes": [],
+  "links": {
+    "dataset": {
+      "href": "https://api.beta.ons.gov.uk/v1/datasets/wellbeing-local-authority",
+      "id": "wellbeing-local-authority"
+    },
+    "dimensions": {},
+    "edition": {
+      "href": "https://api.beta.ons.gov.uk/v1/datasets/wellbeing-local-authority/editions/time-series",
+      "id": "time-series"
+    },
+    "self": {
+      "href": "https://api.beta.ons.gov.uk/v1/datasets/wellbeing-local-authority/editions/time-series/versions/4"
+    }
+  },
+  "release_date": "2023-11-28T00:00:00.000Z",
+  "state": "published",
+  "usage_notes": [
+    {
+      "title": "Individual estimates suppressed with \"[c]\" relate to statistics based on a small number of respondents (< 5). Such values have been suppressed on quality grounds and to maintain confidentiality. Secondary suppression has also been carried out to maintain this confidentiality.  Individual estimates suppressed with \"[w]\" relate to when no people were recorded by the survey as being in a category.    Where the sample size for a local authority was 50 or fewer respondents, all estimates have been suppressed with \"[u]\" due to low reliability of estimates.  Where data are not available for a reference period, values have been replaced with \"[x]\""
+    }
+  ],
+  "version": 4,
+  "type": "v4"
+}
