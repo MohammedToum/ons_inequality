@@ -1,0 +1,21 @@
+services:
+  jupyter:
+    image: jupyter/scipy-notebook:latest
+
+    container_name: ons_inequality_jupyter
+
+    ports:
+      - "8888:8888"
+
+    volumes:
+      - ./data:/home/jovyan/work/data
+      - ./notebooks:/home/jovyan/work/notebooks
+      - ./src:/home/jovyan/work/src
+
+    environment:
+      - JUPYTER_ENABLE_LAB=yes
+
+    command: >
+      start-notebook.py
+      --NotebookApp.token=''
+      --NotebookApp.password=''

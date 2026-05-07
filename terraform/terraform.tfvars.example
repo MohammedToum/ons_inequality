@@ -1,0 +1,9 @@
+project_id        = "ons-inequality-dev"
+region            = "europe-west2"
+bigquery_location = "europe-west2"
+environment       = "dev"
+
+raw_dataset_id          = "ons_raw"
+staging_dataset_id      = "ons_stg"
+intermediate_dataset_id = "ons_int"
+marts_dataset_id        = "ons_mart"

@@ -49,10 +49,11 @@ x-airflow-common:
   # In order to add custom dependencies or upgrade provider distributions you can use your extended image.
   # Comment the image line, place your Dockerfile in the directory where you placed the docker-compose.yaml
   # and uncomment the "build" line below, Then run `docker-compose build` to build the images.
-  image: ${AIRFLOW_IMAGE_NAME:-ons-inequality-airflow:latest}
   build:
     context: .
     dockerfile: airflow/Dockerfile
+  image: ${AIRFLOW_IMAGE_NAME:-ons-inequality-airflow:latest}
+
   env_file:
     - ${ENV_FILE_PATH:-.env}
   environment:
@@ -64,7 +65,7 @@ x-airflow-common:
     AIRFLOW__CELERY__BROKER_URL: redis://:@redis:6379/0
     AIRFLOW__CORE__FERNET_KEY: ${FERNET_KEY}
     AIRFLOW__CORE__DAGS_ARE_PAUSED_AT_CREATION: 'true'
-    AIRFLOW__CORE__LOAD_EXAMPLES: 'true'
+    AIRFLOW__CORE__LOAD_EXAMPLES: 'false'
     AIRFLOW__CORE__EXECUTION_API_SERVER_URL: 'http://airflow-apiserver:8080/execution/'
     AIRFLOW__API_AUTH__JWT_SECRET: ${AIRFLOW__API_AUTH__JWT_SECRET:-airflow_jwt_secret}
     AIRFLOW__API_AUTH__JWT_ISSUER: ${AIRFLOW__API_AUTH__JWT_ISSUER:-airflow}
@@ -78,14 +79,27 @@ x-airflow-common:
     _PIP_ADDITIONAL_REQUIREMENTS: ${_PIP_ADDITIONAL_REQUIREMENTS:-}
     # The following line can be used to set a custom config file, stored in the local config folder
     AIRFLOW_CONFIG: '/opt/airflow/config/airflow.cfg'
+
+    # GCP Service Account
+    GOOGLE_APPLICATION_CREDENTIALS: /home/airflow/.config/gcloud/application_default_credentials.json    
+    GOOGLE_CLOUD_PROJECT: ons-inequality-dev
+    # DBT Profile 
+    DBT_PROFILES_DIR: /opt/dbt/profiles
+    # DBT PROJECT 
+    DBT_PROFILES_DIR: /opt/dbt/
+
+
   volumes:
     - ./airflow/dags:/opt/airflow/dags
     - ./airflow/logs:/opt/airflow/logs
     - ./airflow/plugins:/opt/airflow/plugins
     - ./configs:/opt/airflow/configs
     - ./data:/opt/airflow/data
-    - ./dbt:/opt/airflow/dbt
     - ./src:/opt/airflow/project/src
+    # dbt
+    - ./dbt:/opt/airflow/dbt
+    # gcloud
+    - ~/.config/gcloud:/home/airflow/.config/gcloud:ro
 
 
   user: "${AIRFLOW_UID:-50000}:0"

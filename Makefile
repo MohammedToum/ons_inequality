@@ -26,8 +26,8 @@ AIRFLOW_WEBSERVER := $(shell docker ps --format '{{.Names}}' | grep airflow-webs
 # Prefer worker if it exists, otherwise use scheduler for exec commands.
 AIRFLOW_EXEC_CONTAINER := $(shell docker ps --format '{{.Names}}' | grep -E 'airflow-worker|airflow-scheduler' | head -n 1)
 
-DBT_PROJECT_DIR  := /opt/airflow/dbt
-DBT_PROFILES_DIR := /opt/airflow/dbt
+DBT_PROJECT_DIR  := /opt/airflow/dbt/ons_inequality
+DBT_PROFILES_DIR := /opt/airflow/dbt/profiles
 
 # ============================================================
 # HELPER MACROS

@@ -1,0 +1,12 @@
+ons_inequality:
+    target: dev
+    outputs:
+        dev:
+            type: bigquery
+            method: oauth
+            project: ons-inequality-dev
+            dataset: dev
+            threads: 4
+            timeout_seconds: 300
+            location: europe-west2
+            priority: interactive

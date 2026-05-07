@@ -1,3 +1,11 @@
 /.venv
 /docs/dev_notes/*
 .env
+
+# Airflow
+airflow/logs/*
+airflow/logs/dag_processor/*
+
+
+# GCP credentials
+credentials/gcp/*

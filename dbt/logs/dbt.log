@@ -1,0 +1,236 @@
+[0m09:29:46.619539 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x104ed9850>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1211d4c50>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1211d5350>]}
+
+
+============================== 09:29:46.622516 | c61cf6e7-7c89-4a9f-b507-498aad532890 ==============================
+[0m09:29:46.622516 [info ] [MainThread]: Running with dbt=1.11.9
+[0m09:29:46.622857 [debug] [MainThread]: running dbt with arguments {'introspect': 'True', 'debug': 'False', 'quiet': 'False', 'empty': 'None', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'log_cache_events': 'False', 'use_colors': 'True', 'target_path': 'None', 'send_anonymous_usage_stats': 'True', 'log_format': 'default', 'partial_parse': 'True', 'use_experimental_parser': 'False', 'warn_error': 'None', 'static_parser': 'True', 'write_json': 'True', 'profiles_dir': '/Users/mohammed/.dbt', 'indirect_selection': 'eager', 'fail_fast': 'False', 'printer_width': '80', 'log_path': 'logs', 'no_print': 'None', 'version_check': 'True', 'cache_selected_only': 'False', 'invocation_command': 'dbt init'}
+[0m09:29:52.078736 [debug] [MainThread]: Starter project path: /Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/dbt/include/starter_project
+[0m09:29:52.085155 [info ] [MainThread]: 
+Your new dbt project "ons_inequality" was created!
+
+For more information on how to configure the profiles.yml file,
+please consult the dbt documentation here:
+
+  https://docs.getdbt.com/docs/configure-your-profile
+
+One more thing:
+
+Need help? Don't hesitate to reach out to us via GitHub issues or on Slack:
+
+  https://community.getdbt.com/
+
+Happy modeling!
+
+[0m09:29:52.085697 [info ] [MainThread]: Setting up your profile.
+[0m09:29:54.783503 [error] [MainThread]: Encountered an error:
+numpy.dtype size changed, may indicate binary incompatibility. Expected 96 from C header, got 88 from PyObject
+[0m09:29:54.788862 [error] [MainThread]: Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/dbt/cli/requires.py", line 182, in wrapper
+    result, success = func(*args, **kwargs)
+                      ^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/dbt/cli/requires.py", line 128, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/dbt/cli/main.py", line 488, in init
+    results = task.run()
+              ^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/dbt/task/init.py", line 346, in run
+    self.setup_profile(profile_name)
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/dbt/task/init.py", line 262, in setup_profile
+    self.create_profile_from_target(adapter, profile_name=profile_name)
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/dbt/task/init.py", line 172, in create_profile_from_target
+    load_plugin(adapter)
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/dbt/adapters/factory.py", line 239, in load_plugin
+    return FACTORY.load_plugin(name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/dbt/adapters/factory.py", line 68, in load_plugin
+    mod: Any = import_module("." + name, "dbt.adapters")
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1147, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 690, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 940, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/dbt/adapters/bigquery/__init__.py", line 1, in <module>
+    from dbt.adapters.bigquery.column import BigQueryColumn
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/dbt/adapters/bigquery/column.py", line 4, in <module>
+    from google.cloud.bigquery import SchemaField
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/google/cloud/bigquery/__init__.py", line 36, in <module>
+    from google.cloud.bigquery.client import Client
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/google/cloud/bigquery/client.py", line 65, in <module>
+    from google.cloud.bigquery_storage_v1.services.big_query_read.client import (
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/google/cloud/bigquery_storage_v1/__init__.py", line 23, in <module>
+    from google.cloud.bigquery_storage_v1 import client
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/google/cloud/bigquery_storage_v1/client.py", line 26, in <module>
+    from google.cloud.bigquery_storage_v1 import reader
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/google/cloud/bigquery_storage_v1/reader.py", line 30, in <module>
+    import pandas
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/pandas/__init__.py", line 22, in <module>
+    from pandas.compat import is_numpy_dev as _is_numpy_dev  # pyright: ignore # noqa:F401
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/pandas/compat/__init__.py", line 25, in <module>
+    from pandas.compat.numpy import (
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/pandas/compat/numpy/__init__.py", line 4, in <module>
+    from pandas.util.version import Version
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/pandas/util/__init__.py", line 2, in <module>
+    from pandas.util._decorators import (  # noqa:F401
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/pandas/util/_decorators.py", line 14, in <module>
+    from pandas._libs.properties import cache_readonly
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/pandas/_libs/__init__.py", line 13, in <module>
+    from pandas._libs.interval import Interval
+  File "pandas/_libs/interval.pyx", line 1, in init pandas._libs.interval
+ValueError: numpy.dtype size changed, may indicate binary incompatibility. Expected 96 from C header, got 88 from PyObject
+
+[0m09:29:54.791035 [debug] [MainThread]: Resource report: {"command_name": "init", "command_success": false, "command_wall_clock_time": 8.222525, "process_in_blocks": "0", "process_kernel_time": 0.238884, "process_mem_max_rss": "115638272", "process_out_blocks": "0", "process_user_time": 0.843991}
+[0m09:29:54.791524 [debug] [MainThread]: Command `dbt init` failed at 09:29:54.791457 after 8.22 seconds
+[0m09:29:54.791745 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1211d5710>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1211d55d0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x120dc97d0>]}
+[0m09:29:54.792004 [debug] [MainThread]: Flushing usage events
+[0m09:29:55.165650 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m09:30:23.801319 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x107b34c10>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x107b70990>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x107bd52d0>]}
+
+
+============================== 09:30:23.804498 | 89e13936-88c9-4cd1-8504-7d09b9029bde ==============================
+[0m09:30:23.804498 [info ] [MainThread]: Running with dbt=1.11.9
+[0m09:30:23.804916 [debug] [MainThread]: running dbt with arguments {'introspect': 'True', 'debug': 'False', 'cache_selected_only': 'False', 'log_format': 'default', 'warn_error': 'None', 'printer_width': '80', 'use_experimental_parser': 'False', 'quiet': 'False', 'fail_fast': 'False', 'use_colors': 'True', 'indirect_selection': 'eager', 'static_parser': 'True', 'version_check': 'True', 'write_json': 'True', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'no_print': 'None', 'empty': 'None', 'partial_parse': 'True', 'log_cache_events': 'False', 'send_anonymous_usage_stats': 'True', 'log_path': 'logs', 'target_path': 'None', 'profiles_dir': '/Users/mohammed/.dbt', 'invocation_command': 'dbt init'}
+[0m09:30:28.578083 [info ] [MainThread]: A project called ons_inequality already exists here.
+[0m09:30:28.583756 [debug] [MainThread]: Resource report: {"command_name": "init", "command_success": true, "command_wall_clock_time": 4.838553, "process_in_blocks": "0", "process_kernel_time": 0.194835, "process_mem_max_rss": "107528192", "process_out_blocks": "0", "process_user_time": 0.767079}
+[0m09:30:28.584811 [debug] [MainThread]: Command `dbt init` succeeded at 09:30:28.584648 after 4.84 seconds
+[0m09:30:28.585414 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1005aae50>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1005decd0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x106b3a9d0>]}
+[0m09:30:28.585985 [debug] [MainThread]: Flushing usage events
+[0m09:30:28.960565 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m09:30:39.764126 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x108564950>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1085cca50>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1085cd150>]}
+
+
+============================== 09:30:39.767779 | 6fac082f-4c34-4c46-838c-faf529653d6c ==============================
+[0m09:30:39.767779 [info ] [MainThread]: Running with dbt=1.11.9
+[0m09:30:39.768145 [debug] [MainThread]: running dbt with arguments {'cache_selected_only': 'False', 'write_json': 'True', 'quiet': 'False', 'use_colors': 'True', 'introspect': 'True', 'log_format': 'default', 'partial_parse': 'True', 'version_check': 'True', 'static_parser': 'True', 'debug': 'False', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'printer_width': '80', 'use_experimental_parser': 'False', 'no_print': 'None', 'warn_error': 'None', 'log_path': 'logs', 'log_cache_events': 'False', 'target_path': 'None', 'empty': 'None', 'indirect_selection': 'eager', 'invocation_command': 'dbt init', 'fail_fast': 'False', 'send_anonymous_usage_stats': 'True', 'profiles_dir': '/Users/mohammed/.dbt'}
+[0m09:30:44.547700 [debug] [MainThread]: Starter project path: /Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/dbt/include/starter_project
+[0m09:30:44.552692 [info ] [MainThread]: 
+Your new dbt project "ons_inequality" was created!
+
+For more information on how to configure the profiles.yml file,
+please consult the dbt documentation here:
+
+  https://docs.getdbt.com/docs/configure-your-profile
+
+One more thing:
+
+Need help? Don't hesitate to reach out to us via GitHub issues or on Slack:
+
+  https://community.getdbt.com/
+
+Happy modeling!
+
+[0m09:30:44.552990 [info ] [MainThread]: Setting up your profile.
+[0m09:30:46.736302 [error] [MainThread]: Encountered an error:
+numpy.dtype size changed, may indicate binary incompatibility. Expected 96 from C header, got 88 from PyObject
+[0m09:30:46.742330 [error] [MainThread]: Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/dbt/cli/requires.py", line 182, in wrapper
+    result, success = func(*args, **kwargs)
+                      ^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/dbt/cli/requires.py", line 128, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/dbt/cli/main.py", line 488, in init
+    results = task.run()
+              ^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/dbt/task/init.py", line 346, in run
+    self.setup_profile(profile_name)
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/dbt/task/init.py", line 262, in setup_profile
+    self.create_profile_from_target(adapter, profile_name=profile_name)
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/dbt/task/init.py", line 172, in create_profile_from_target
+    load_plugin(adapter)
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/dbt/adapters/factory.py", line 239, in load_plugin
+    return FACTORY.load_plugin(name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/dbt/adapters/factory.py", line 68, in load_plugin
+    mod: Any = import_module("." + name, "dbt.adapters")
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1147, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 690, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 940, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/dbt/adapters/bigquery/__init__.py", line 1, in <module>
+    from dbt.adapters.bigquery.column import BigQueryColumn
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/dbt/adapters/bigquery/column.py", line 4, in <module>
+    from google.cloud.bigquery import SchemaField
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/google/cloud/bigquery/__init__.py", line 36, in <module>
+    from google.cloud.bigquery.client import Client
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/google/cloud/bigquery/client.py", line 65, in <module>
+    from google.cloud.bigquery_storage_v1.services.big_query_read.client import (
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/google/cloud/bigquery_storage_v1/__init__.py", line 23, in <module>
+    from google.cloud.bigquery_storage_v1 import client
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/google/cloud/bigquery_storage_v1/client.py", line 26, in <module>
+    from google.cloud.bigquery_storage_v1 import reader
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/google/cloud/bigquery_storage_v1/reader.py", line 30, in <module>
+    import pandas
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/pandas/__init__.py", line 22, in <module>
+    from pandas.compat import is_numpy_dev as _is_numpy_dev  # pyright: ignore # noqa:F401
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/pandas/compat/__init__.py", line 25, in <module>
+    from pandas.compat.numpy import (
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/pandas/compat/numpy/__init__.py", line 4, in <module>
+    from pandas.util.version import Version
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/pandas/util/__init__.py", line 2, in <module>
+    from pandas.util._decorators import (  # noqa:F401
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/pandas/util/_decorators.py", line 14, in <module>
+    from pandas._libs.properties import cache_readonly
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/pandas/_libs/__init__.py", line 13, in <module>
+    from pandas._libs.interval import Interval
+  File "pandas/_libs/interval.pyx", line 1, in init pandas._libs.interval
+ValueError: numpy.dtype size changed, may indicate binary incompatibility. Expected 96 from C header, got 88 from PyObject
+
+[0m09:30:46.744916 [debug] [MainThread]: Resource report: {"command_name": "init", "command_success": false, "command_wall_clock_time": 7.0343537, "process_in_blocks": "0", "process_kernel_time": 0.26724, "process_mem_max_rss": "120832000", "process_out_blocks": "0", "process_user_time": 0.849331}
+[0m09:30:46.745829 [debug] [MainThread]: Command `dbt init` failed at 09:30:46.745520 after 7.04 seconds
+[0m09:30:46.746138 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1085cd010>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1085cca50>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x100e32090>]}
+[0m09:30:46.746354 [debug] [MainThread]: Flushing usage events
+[0m09:30:47.124403 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m14:09:10.975204 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x107981890>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1079dc9d0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1079dda90>]}
+
+
+============================== 14:09:10.978687 | 66af9963-f6cb-49cc-aa3f-ab077360cb28 ==============================
+[0m14:09:10.978687 [info ] [MainThread]: Running with dbt=1.11.9
+[0m14:09:10.979170 [debug] [MainThread]: running dbt with arguments {'write_json': 'True', 'partial_parse': 'True', 'log_path': 'logs', 'printer_width': '80', 'log_format': 'default', 'no_print': 'None', 'invocation_command': 'dbt debug', 'target_path': 'None', 'indirect_selection': 'eager', 'debug': 'False', 'quiet': 'False', 'cache_selected_only': 'False', 'empty': 'None', 'send_anonymous_usage_stats': 'True', 'use_experimental_parser': 'False', 'introspect': 'True', 'log_cache_events': 'False', 'static_parser': 'True', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'fail_fast': 'False', 'warn_error': 'None', 'version_check': 'True', 'profiles_dir': '/Users/mohammed/.dbt', 'use_colors': 'True'}
+[0m14:09:10.990755 [info ] [MainThread]: dbt version: 1.11.9
+[0m14:09:10.991050 [info ] [MainThread]: python version: 3.11.4
+[0m14:09:10.991229 [info ] [MainThread]: python path: /Library/Frameworks/Python.framework/Versions/3.11/bin/python3.11
+[0m14:09:10.991380 [info ] [MainThread]: os info: macOS-15.1.1-arm64-arm-64bit
+[0m14:09:10.993537 [info ] [MainThread]: Error importing adapter: No module named 'dbt.adapters.duckdb'
+[0m14:09:10.993851 [info ] [MainThread]: Using profiles dir at /Users/mohammed/.dbt
+[0m14:09:10.994000 [info ] [MainThread]: Using profiles.yml file at /Users/mohammed/.dbt/profiles.yml
+[0m14:09:10.994140 [info ] [MainThread]: Using dbt_project.yml file at /Users/mohammed/repos/ons_inequality/dbt/dbt_project.yml
+[0m14:09:10.994277 [info ] [MainThread]: Configuration:
+[0m14:09:10.994407 [info ] [MainThread]:   profiles.yml file [[31mERROR invalid[0m]
+[0m14:09:10.994538 [info ] [MainThread]:   dbt_project.yml file [[31mERROR not found[0m]
+[0m14:09:10.994664 [info ] [MainThread]: Required dependencies:
+[0m14:09:10.994831 [debug] [MainThread]: Executing "git --help"
+[0m14:09:11.029148 [debug] [MainThread]: STDOUT: "b"usage: git [-v | --version] [-h | --help] [-C <path>] [-c <name>=<value>]\n           [--exec-path[=<path>]] [--html-path] [--man-path] [--info-path]\n           [-p | --paginate | -P | --no-pager] [--no-replace-objects] [--bare]\n           [--git-dir=<path>] [--work-tree=<path>] [--namespace=<name>]\n           [--super-prefix=<path>] [--config-env=<name>=<envvar>]\n           <command> [<args>]\n\nThese are common Git commands used in various situations:\n\nstart a working area (see also: git help tutorial)\n   clone     Clone a repository into a new directory\n   init      Create an empty Git repository or reinitialize an existing one\n\nwork on the current change (see also: git help everyday)\n   add       Add file contents to the index\n   mv        Move or rename a file, a directory, or a symlink\n   restore   Restore working tree files\n   rm        Remove files from the working tree and from the index\n\nexamine the history and state (see also: git help revisions)\n   bisect    Use binary search to find the commit that introduced a bug\n   diff      Show changes between commits, commit and working tree, etc\n   grep      Print lines matching a pattern\n   log       Show commit logs\n   show      Show various types of objects\n   status    Show the working tree status\n\ngrow, mark and tweak your common history\n   branch    List, create, or delete branches\n   commit    Record changes to the repository\n   merge     Join two or more development histories together\n   rebase    Reapply commits on top of another base tip\n   reset     Reset current HEAD to the specified state\n   switch    Switch branches\n   tag       Create, list, delete or verify a tag object signed with GPG\n\ncollaborate (see also: git help workflows)\n   fetch     Download objects and refs from another repository\n   pull      Fetch from and integrate with another repository or a local branch\n   push      Update remote refs along with associated objects\n\n'git help -a' and 'git help -g' list available subcommands and some\nconcept guides. See 'git help <command>' or 'git help <concept>'\nto read about a specific subcommand or concept.\nSee 'git help git' for an overview of the system.\n""
+[0m14:09:11.029773 [debug] [MainThread]: STDERR: "b''"
+[0m14:09:11.029978 [info ] [MainThread]:  - git [[32mOK found[0m]
+
+[0m14:09:11.030158 [info ] [MainThread]: Connection test skipped since no profile was found
+[0m14:09:11.030369 [info ] [MainThread]: [31m2 checks failed:[0m
+[0m14:09:11.030514 [info ] [MainThread]: Could not load dbt_project.yml
+Profile loading failed for the following reason:
+Runtime Error
+  Credentials in profile "dbt_pfl_statistics", target "duckdb" invalid: Runtime Error
+    Could not find adapter type duckdb!
+
+
+[0m14:09:11.030664 [info ] [MainThread]: Project loading failed for the following reason:
+ project path </Users/mohammed/repos/ons_inequality/dbt/dbt_project.yml> not found
+
+[0m14:09:11.064710 [debug] [MainThread]: Resource report: {"command_name": "debug", "command_success": false, "command_wall_clock_time": 0.15948126, "process_in_blocks": "0", "process_kernel_time": 0.230311, "process_mem_max_rss": "107823104", "process_out_blocks": "0", "process_user_time": 0.749427}
+[0m14:09:11.065118 [debug] [MainThread]: Command `dbt debug` failed at 14:09:11.065059 after 0.16 seconds
+[0m14:09:11.065467 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1079df790>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1079dd810>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1079c5090>]}
+[0m14:09:11.065749 [debug] [MainThread]: Flushing usage events
+[0m14:09:11.951251 [debug] [MainThread]: An error was encountered while trying to flush usage events
