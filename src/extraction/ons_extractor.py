@@ -6,7 +6,7 @@ import time
 from pathlib import Path
 from typing import Any
 
-from ons_inequality.clients.ons_api import ONSClient
+from clients.ons_api import ONSClient
 
 logger = logging.getLogger(__name__)
 

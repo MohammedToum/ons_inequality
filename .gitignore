@@ -1,11 +1,16 @@
 /.venv
 /docs/dev_notes/*
 .env
+*.pyc
 
 # Airflow
 airflow/logs/*
 airflow/logs/dag_processor/*
-
+airflow/logs
 
 # GCP credentials
 credentials/gcp/*
+
+
+# Data Files
+data/raw/*

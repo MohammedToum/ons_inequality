@@ -89,7 +89,7 @@ format:
 # AIRFLOW LIFECYCLE SHORT COMMANDS
 # ============================================================
 
-.PHONY: afu afd afr afrb afrs afl afs afinit ps logs kill
+.PHONY: afu afd afdu afr afrb afrs afl afs afinit ps logs kill
 
 afinit:
 	$(call banner,Initialising Airflow...)
@@ -102,6 +102,12 @@ afu:
 afd:
 	$(call banner,Stopping Airflow containers...)
 	$(COMPOSE) down
+
+afdu:
+	$(call banner,Stopping Airflow containers...)
+	$(COMPOSE) down
+	$(call banner,Starting Airflow...)
+	$(COMPOSE) up -d
 
 afr:
 	$(call banner,Full Airflow reset including volumes...)

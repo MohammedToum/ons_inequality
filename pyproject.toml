@@ -33,11 +33,26 @@ gcp = [
 ]
 
 [project.scripts]
-ons-inequality = "ons_inequality.cli:main"
+ons-inequality = "cli:main"
 
 [tool.uv]
 package = true
 
+[tool.setuptools]
+package-dir = {"" = "src"}
+py-modules = ["cli", "config"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = [
+    "clients*",
+    "extraction*",
+    "pipelines*",
+    "schemas*",
+    "storage*",
+    "transformation*",
+]
+
 [build-system]
-requires = ["uv_build>=0.9.5,<0.10.0"]
-build-backend = "uv_build"
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"

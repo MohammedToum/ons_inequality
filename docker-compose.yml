@@ -79,10 +79,11 @@ x-airflow-common:
     _PIP_ADDITIONAL_REQUIREMENTS: ${_PIP_ADDITIONAL_REQUIREMENTS:-}
     # The following line can be used to set a custom config file, stored in the local config folder
     AIRFLOW_CONFIG: '/opt/airflow/config/airflow.cfg'
-
     # GCP Service Account
     GOOGLE_APPLICATION_CREDENTIALS: /home/airflow/.config/gcloud/application_default_credentials.json    
     GOOGLE_CLOUD_PROJECT: ons-inequality-dev
+    ONS_RAW_GCS_BUCKET: ${ONS_RAW_GCS_BUCKET:-}
+    ONS_RAW_GCS_PREFIX: ${ONS_RAW_GCS_PREFIX:-raw/ons}
     # DBT Profile 
     DBT_PROFILES_DIR: /opt/dbt/profiles
     # DBT PROJECT 

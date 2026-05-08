@@ -19,8 +19,8 @@ from typing import Any
 
 import yaml
 
-from ons_inequality.clients.ons_api import ONSClient
-from ons_inequality.extraction.ons_extractor import ONSExtractor
+from clients.ons_api import ONSClient
+from extraction.ons_extractor import ONSExtractor
 
 logging.basicConfig(
     level=logging.INFO,
