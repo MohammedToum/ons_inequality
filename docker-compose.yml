@@ -84,6 +84,8 @@ x-airflow-common:
     GOOGLE_CLOUD_PROJECT: ons-inequality-dev
     ONS_RAW_GCS_BUCKET: ${ONS_RAW_GCS_BUCKET:-}
     ONS_RAW_GCS_PREFIX: ${ONS_RAW_GCS_PREFIX:-raw/ons}
+    ONS_RAW_BQ_DATASET: ${ONS_RAW_BQ_DATASET:-raw_ons}
+    ONS_RAW_BQ_LOCATION: ${ONS_RAW_BQ_LOCATION:-europe-west2}
     # DBT Profile 
     DBT_PROFILES_DIR: /opt/dbt/profiles
     # DBT PROJECT 

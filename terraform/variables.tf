@@ -25,7 +25,7 @@ variable "environment" {
 variable "raw_dataset_id" {
   description = "Dataset containing raw Terraform-managed ONS landing tables."
   type        = string
-  default     = "ons_raw"
+  default     = "raw_ons"
 }
 
 variable "staging_dataset_id" {
