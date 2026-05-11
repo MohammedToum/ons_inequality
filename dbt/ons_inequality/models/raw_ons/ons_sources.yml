@@ -1,0 +1,14 @@
+version: 2
+
+sources:
+  - name: raw_ons
+    database: ons-inequality-dev
+    schema: raw_ons
+
+    tables:
+      - name: raw_regional_gdp_by_quarter
+      - name: raw_regional_gdp_by_year
+      - name: raw_suicides_in_the_uk
+      - name: raw_tax_benefits_statistics
+      - name: raw_wellbeing_local_authority
+      - name: raw_wellbeing_quarterly

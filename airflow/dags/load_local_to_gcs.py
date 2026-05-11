@@ -1,18 +1,18 @@
 """
-Airflow DAG for uploading local raw ONS dataset assets to Google Cloud Storage.
+Helpers for uploading local raw ONS dataset assets to Google Cloud Storage.
 
-The DAG mirrors the local raw storage layout under the configured GCS prefix and
-uploads CSV data files plus JSON metadata files for each dataset version folder.
+The helpers mirror the local raw storage layout under the configured GCS prefix
+and upload CSV data files plus JSON metadata files for dataset version folders.
 """
 
 from __future__ import annotations
 
 import logging
 import os
-from datetime import datetime
 from pathlib import Path
+from typing import Any
 
-from airflow.sdk import Variable, dag, task
+from airflow.sdk import Variable
 from google.cloud import storage
 
 logger = logging.getLogger(__name__)
@@ -59,22 +59,49 @@ def _resolve_bucket_name() -> str:
     return Variable.get(GCS_BUCKET_AIRFLOW_VAR, default="").strip()
 
 
-def _discover_dataset_assets(raw_root: Path) -> list[dict[str, str]]:
+def _dataset_version_dirs(raw_root: Path, dataset: dict[str, Any]) -> list[Path]:
+    """
+    Return local version folders for a single configured dataset edition.
+    """
+    dataset_root = raw_root / str(dataset["dataset_id"]) / str(dataset["edition"])
+
+    if str(dataset["version"]) == "latest":
+        return sorted(path for path in dataset_root.glob("version_*") if path.is_dir())
+
+    version_dir = dataset_root / f"version_{dataset['version']}"
+    return [version_dir] if version_dir.is_dir() else []
+
+
+def _discover_dataset_assets(
+    raw_root: Path,
+    dataset: dict[str, Any] | None = None,
+) -> list[dict[str, str]]:
     """
     Discover CSV and JSON assets in local ONS dataset version folders.
 
     Each dataset version folder is expected to contain at least one CSV file and
     a `metadata.json` file. `csvw_metadata.json` is included when present.
+    When a dataset config is provided, discovery is limited to that dataset and
+    edition instead of scanning the full raw root.
     """
     if not raw_root.exists():
         raise FileNotFoundError(f"Raw ONS folder does not exist: {raw_root}")
 
-    version_dirs = sorted(
-        path for path in raw_root.glob("*/*/version_*") if path.is_dir()
-    )
+    if dataset is None:
+        version_dirs = sorted(
+            path for path in raw_root.glob("*/*/version_*") if path.is_dir()
+        )
+        missing_message = f"No ONS dataset version folders found under {raw_root}"
+    else:
+        version_dirs = _dataset_version_dirs(raw_root, dataset)
+        missing_message = (
+            "No ONS dataset version folders found for "
+            f"{dataset['dataset_id']}/{dataset['edition']}/version={dataset['version']} "
+            f"under {raw_root}"
+        )
 
     if not version_dirs:
-        raise FileNotFoundError(f"No ONS dataset version folders found under {raw_root}")
+        raise FileNotFoundError(missing_message)
 
     assets: list[dict[str, str]] = []
 
@@ -110,69 +137,36 @@ def _discover_dataset_assets(raw_root: Path) -> list[dict[str, str]]:
     return assets
 
 
-@dag(
-    dag_id="local_ons_raw_to_gcs",
-    description="Upload local raw ONS CSV and metadata JSON files to GCS.",
-    schedule=None,
-    start_date=datetime(2026, 1, 1),
-    catchup=False,
-    tags=["ons", "raw", "gcs"],
-)
-def local_ons_raw_to_gcs() -> None:
+def _upload_assets_to_gcs(assets: list[dict[str, str]]) -> list[str]:
     """
-    Define the local raw ONS to GCS upload workflow.
-
-    The workflow first discovers uploadable assets under the mounted local raw
-    data directory, then uploads each asset to the configured GCS bucket.
+    Upload discovered raw assets to Google Cloud Storage.
     """
-    @task
-    def discover_assets() -> list[dict[str, str]]:
-        """
-        Airflow task that returns metadata for local raw assets to upload.
-        """
-        assets = _discover_dataset_assets(LOCAL_RAW_ROOT)
-        logger.info("Discovered %s raw ONS asset(s) for upload", len(assets))
-        return assets
+    bucket_name = _resolve_bucket_name()
 
-    @task
-    def upload_assets(assets: list[dict[str, str]]) -> list[str]:
-        """
-        Airflow task that uploads discovered raw assets to Google Cloud Storage.
+    if not bucket_name:
+        raise ValueError(
+            f"Set the {GCS_BUCKET_ENV_VAR} environment variable or the "
+            f"{GCS_BUCKET_AIRFLOW_VAR} Airflow Variable to the target GCS "
+            "bucket name before running this DAG."
+        )
 
-        Returns the uploaded GCS object names so the task result records exactly
-        which assets were sent to the bucket.
-        """
-        bucket_name = _resolve_bucket_name()
+    storage_client = storage.Client()
+    bucket = storage_client.bucket(bucket_name)
+    uploaded_blob_names: list[str] = []
 
-        if not bucket_name:
-            raise ValueError(
-                f"Set the {GCS_BUCKET_ENV_VAR} environment variable or the "
-                f"{GCS_BUCKET_AIRFLOW_VAR} Airflow Variable to the target GCS "
-                "bucket name before running this DAG."
-            )
+    for asset in assets:
+        blob = bucket.blob(asset["blob_name"])
+        blob.upload_from_filename(
+            asset["local_path"],
+            content_type=asset["content_type"],
+        )
+        uploaded_blob_names.append(asset["blob_name"])
 
-        storage_client = storage.Client()
-        bucket = storage_client.bucket(bucket_name)
-        uploaded_blob_names: list[str] = []
+        logger.info(
+            "Uploaded %s to gs://%s/%s",
+            asset["local_path"],
+            bucket_name,
+            asset["blob_name"],
+        )
 
-        for asset in assets:
-            blob = bucket.blob(asset["blob_name"])
-            blob.upload_from_filename(
-                asset["local_path"],
-                content_type=asset["content_type"],
-            )
-            uploaded_blob_names.append(asset["blob_name"])
-
-            logger.info(
-                "Uploaded %s to gs://%s/%s",
-                asset["local_path"],
-                bucket_name,
-                asset["blob_name"],
-            )
-
-        return uploaded_blob_names
-
-    upload_assets(discover_assets())
-
-
-local_ons_raw_to_gcs()
+    return uploaded_blob_names

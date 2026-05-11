@@ -210,6 +210,21 @@ dbt-docs:
 		--project-dir $(DBT_PROJECT_DIR) \
 		--profiles-dir $(DBT_PROFILES_DIR)
 
+dbt-ls:
+	$(call require_airflow_container)
+	$(call banner,Listing dbt resources inside Airflow container...)
+	docker exec -it $(AIRFLOW_EXEC_CONTAINER) dbt ls --resource-type source \
+		--project-dir $(DBT_PROJECT_DIR) \
+		--profiles-dir $(DBT_PROFILES_DIR)
+
+dbt-sf:
+	$(call require_airflow_container)
+	$(call banner,Checking source freshness with DBT inside Airflow container...)
+	docker exec -it $(AIRFLOW_EXEC_CONTAINER) dbt source freshness \
+		--project-dir $(DBT_PROJECT_DIR) \
+		--profiles-dir $(DBT_PROFILES_DIR)
+
+
 # ============================================================
 # QUALITY-OF-LIFE COMMANDS
 # ============================================================

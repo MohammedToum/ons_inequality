@@ -31,12 +31,15 @@ clean-targets:         # directories to be removed by `dbt clean`
 # files using the `{{ config(...) }}` macro.
 models:
   ons_inequality:
-    staging:
-      +schema: stg
+    raw_ons:
+      +schema: raw_ons
+      +materialized: table
+    stg_ons:
+      +schema: stg_ons
       +materialized: view
-    intermediate:
-      +schema: int
+    int_ons:
+      +schema: int_ons
       +materialized: view
-    marts:
-      +schema: mart
+    marts_ons:
+      +schema: mart_ons
       +materialized: table

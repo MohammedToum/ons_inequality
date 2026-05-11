@@ -6,7 +6,8 @@
 # Airflow
 airflow/logs/*
 airflow/logs/dag_processor/*
-airflow/logs
+airflow/logs/
+airflow/logs/dag_processor/latest
 
 # GCP credentials
 credentials/gcp/*
@@ -14,3 +15,4 @@ credentials/gcp/*
 
 # Data Files
 data/raw/*
+airflow/logs/dag_processor/latest
