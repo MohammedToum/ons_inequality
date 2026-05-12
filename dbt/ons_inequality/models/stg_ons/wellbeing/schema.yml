@@ -1,0 +1,185 @@
+version: 2
+
+models:
+  - name: stg_suicides_in_the_uk
+    description: Staging model for ONS suicide statistics in the UK.
+
+    columns:
+      - name: observation_sk
+        description: Surrogate key for each unique suicide statistics observation.
+        tests:
+          - not_null
+          - unique
+
+      - name: observation_value
+        description: Numeric suicide statistics observation value.
+        tests:
+          - not_null
+
+      - name: calendar_year
+        description: Calendar year for the observation.
+        tests:
+          - not_null
+
+      - name: time_label
+        description: Human-readable time label from the source data.
+        tests:
+          - not_null
+
+      - name: geography_code
+        description: Administrative geography code for the observation.
+        tests:
+          - not_null
+
+      - name: geography_name
+        description: Human-readable geography name.
+
+  - name: stg_wellbeing_local_authority
+    description: Staging model for ONS local authority wellbeing time series data.
+
+    columns:
+      - name: observation_sk
+        description: Surrogate key for each unique local authority wellbeing observation.
+        tests:
+          - not_null
+          - unique
+
+      - name: observation_value
+        description: Numeric wellbeing observation value after suppressed values are converted to null.
+
+      - name: data_marking
+        description: ONS data marking flag indicating suppression, reliability, provisionality, or publication caveats.
+
+      - name: is_suppressed
+        description: Boolean flag showing whether the observation value has been suppressed due to an ONS data marking.
+        tests:
+          - not_null
+          - accepted_values:
+              values: [true, false]
+              quote: false
+
+      - name: lower_confidence_limit
+        description: Lower confidence limit for the wellbeing estimate after suppressed values are converted to null.
+
+      - name: upper_confidence_limit
+        description: Upper confidence limit for the wellbeing estimate after suppressed values are converted to null.
+
+      - name: financial_year_id
+        description: Financial year identifier from the source dataset.
+        tests:
+          - not_null
+
+      - name: time_label
+        description: Human-readable time label from the source data.
+        tests:
+          - not_null
+
+      - name: start_year
+        description: Start calendar year extracted from the financial year identifier.
+        tests:
+          - not_null
+
+      - name: end_year
+        description: End calendar year extracted from the financial year identifier.
+        tests:
+          - not_null
+
+      - name: geography_code
+        description: Local authority geography code for the observation.
+        tests:
+          - not_null
+
+      - name: geography_name
+        description: Human-readable local authority geography name.
+
+      - name: wellbeing_measure_code
+        description: Code identifying the wellbeing measure.
+        tests:
+          - not_null
+
+      - name: wellbeing_measure_name
+        description: Human-readable wellbeing measure name.
+
+      - name: wellbeing_estimate_code
+        description: Code identifying the wellbeing estimate type.
+        tests:
+          - not_null
+
+      - name: wellbeing_estimate_name
+        description: Human-readable wellbeing estimate type.
+
+  - name: stg_wellbeing_quarterly
+    description: Staging model for ONS quarterly personal wellbeing statistics.
+
+    columns:
+      - name: observation_sk
+        description: Surrogate key for each unique quarterly wellbeing observation.
+        tests:
+          - not_null
+          - unique
+
+      - name: observation_value
+        description: Numeric quarterly wellbeing observation value.
+        tests:
+          - not_null
+
+      - name: lower_confidence_limit
+        description: Lower confidence limit for the quarterly wellbeing estimate.
+
+      - name: upper_confidence_limit
+        description: Upper confidence limit for the quarterly wellbeing estimate.
+
+      - name: quarter_id
+        description: ONS quarter identifier for the observation.
+        tests:
+          - not_null
+
+      - name: time_label
+        description: Human-readable time label from the source data.
+        tests:
+          - not_null
+
+      - name: year
+        description: Calendar year extracted from the quarter identifier.
+        tests:
+          - not_null
+
+      - name: quarter
+        description: Calendar quarter number extracted from the quarter identifier.
+        tests:
+          - not_null
+          - accepted_values:
+              values: [1, 2, 3, 4]
+              quote: false
+
+      - name: geography_code
+        description: Geography code for the observation.
+        tests:
+          - not_null
+
+      - name: geography_name
+        description: Human-readable geography name.
+
+      - name: wellbeing_measure_code
+        description: Code identifying the wellbeing measure.
+        tests:
+          - not_null
+
+      - name: wellbeing_measure_name
+        description: Human-readable wellbeing measure name.
+
+      - name: wellbeing_estimate_code
+        description: Code identifying the wellbeing estimate type.
+        tests:
+          - not_null
+
+      - name: wellbeing_estimate_name
+        description: Human-readable wellbeing estimate type.
+
+      - name: seasonal_adjustment_code
+        description: Code identifying whether the observation is seasonally adjusted.
+        tests:
+          - not_null
+
+      - name: seasonal_adjustment_name
+        description: Human-readable seasonal adjustment status.

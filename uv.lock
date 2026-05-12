@@ -349,6 +349,15 @@ wheels = [
 ]
 
 [[package]]
+name = "dbt"
+version = "1.0.0.40.17"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "setuptools" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/ff/b8/61595f1c0dafaa2dd396b2c5768275cbf893a0baf7743fd506b83b7f65a1/dbt-1.0.0.40.17.tar.gz", hash = "sha256:22b40a26ab50bf47ca3d70fcbaf13dfc0058c577d31971e8fc813abce689b47f", size = 3330, upload-time = "2026-04-29T18:12:46.024Z" }
+
+[[package]]
 name = "dbt-adapters"
 version = "1.22.10"
 source = { registry = "https://pypi.org/simple" }
@@ -1403,6 +1412,7 @@ name = "ons-inequality"
 version = "0.1.0"
 source = { editable = "." }
 dependencies = [
+    { name = "dbt" },
     { name = "httpx" },
     { name = "pandas" },
     { name = "pydantic" },
@@ -1413,7 +1423,6 @@ dependencies = [
 [package.dev-dependencies]
 dbt = [
     { name = "dbt-bigquery" },
-    { name = "dbt-core" },
     { name = "sqlfluff" },
 ]
 dev = [
@@ -1430,6 +1439,7 @@ gcp = [
 
 [package.metadata]
 requires-dist = [
+    { name = "dbt", specifier = ">=1.0.0.40.17" },
     { name = "httpx", specifier = ">=0.28.1" },
     { name = "pandas", specifier = ">=3.0.2" },
     { name = "pydantic", specifier = ">=2.13.3" },
@@ -1440,7 +1450,6 @@ requires-dist = [
 [package.metadata.requires-dev]
 dbt = [
     { name = "dbt-bigquery", specifier = ">=1.11.1" },
-    { name = "dbt-core", specifier = ">=1.11.8" },
     { name = "sqlfluff", specifier = ">=4.1.0" },
 ]
 dev = [

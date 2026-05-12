@@ -1,0 +1,231 @@
+version: 2
+
+models:
+    - name: stg_regional_gdp_by_quarter
+    description: Staging model for quarterly regional GDP observations from ONS.
+
+    columns:
+        - name: observation_sk
+        description: Surrogate key for each unique quarterly regional GDP observation.
+        tests:
+            - not_null
+            - unique
+
+        - name: observation_value
+        description: Numeric GDP observation value after suppressed values are converted to null.
+
+        - name: data_marking
+        description: ONS data marking flag indicating suppression, reliability, provisionality, or publication caveats.
+        tests:
+            - accepted_values:
+            values: ["", "."]
+            quote: false
+
+        - name: is_suppressed
+        description: Boolean flag showing whether the observation value has been suppressed due to an ONS data marking.
+        tests:
+            - not_null
+            - accepted_values:
+                values: [true, false]
+                quote: false
+
+        - name: quarter_id
+        description: ONS quarter identifier for the observation.
+        tests:
+            - not_null
+
+        - name: time_label
+        description: Human-readable time label from the source data.
+        tests:
+            - not_null
+
+        - name: year
+        description: Calendar year extracted from the quarter identifier.
+        tests:
+            - not_null
+
+        - name: quarter
+        description: Calendar quarter number extracted from the quarter identifier.
+        tests:
+            - not_null
+            - accepted_values:
+                values: [1, 2, 3, 4]
+                quote: false
+
+        - name: region_code
+        description: ONS NUTS geography code for the region.
+        tests:
+            - not_null
+
+        - name: region_name
+        description: Human-readable region name.
+        tests:
+            accepted_values:
+                values:
+                    - "East Midlands"
+                    - "East of England"
+                    - "England"
+                    - "Extra-regio"
+                    - "London"
+                    - "North East"
+                    - "North West"
+                    - "South East"
+                    - "South West"
+                    - "Wales"
+                    - "West Midlands"
+                    - "Yorkshire and The Humber"
+
+        - name: industry_code
+        description: Industry classification code from the source dataset.
+        tests:
+            - not_null
+
+        - name: industry_name
+        description: Human-readable industry classification name.
+
+        - name: price_basis_code
+        description: Code describing the price basis used for the GDP measure.
+        tests:
+            - not_null
+
+        - name: price_basis_name
+        description: Human-readable price basis name.
+
+        - name: measure_code
+        description: Code identifying whether the observation represents an index, growth rate, or related GDP measure.
+        tests:
+            - not_null
+
+        - name: measure_name
+        description: Human-readable GDP measure name.
+
+        - name: stg_regional_gdp_by_year
+        description: Staging model for annual regional GDP observations from ONS.
+
+    columns:
+        - name: observation_sk
+        description: Surrogate key for each unique annual regional GDP observation.
+        tests:
+            - not_null
+            - unique
+
+        - name: observation_value
+        description: Numeric GDP observation value after suppressed values are converted to null.
+
+        - name: data_marking
+        description: ONS data marking flag indicating suppression, reliability, provisionality, or publication caveats.
+
+        - name: is_suppressed
+        description: Boolean flag showing whether the observation value has been suppressed due to an ONS data marking.
+        tests:
+            - not_null
+            - accepted_values:
+                values: [true, false]
+                quote: false
+
+        - name: calendar_year
+        description: Calendar year for the annual GDP observation.
+        tests:
+            - not_null
+
+        - name: time_label
+        description: Human-readable time label from the source data.
+        tests:
+            - not_null
+
+        - name: region_code
+        description: ONS NUTS geography code for the region.
+        tests:
+            - not_null
+
+        - name: region_name
+        description: Human-readable region name.
+
+        - name: industry_code
+        description: Industry classification code from the source dataset.
+        tests:
+            - not_null
+
+        - name: industry_name
+        description: Human-readable industry classification name.
+
+        - name: price_basis_code
+        description: Code describing the price basis used for the GDP measure.
+        tests:
+        - not_null
+
+        - name: price_basis_name
+        description: Human-readable price basis name.
+
+        - name: measure_code
+        description: Code identifying whether the observation represents an index, growth rate, or related GDP measure.
+        tests:
+            - not_null
+
+        - name: measure_name
+        description: Human-readable GDP measure name.
+
+    - name: stg_tax_benefits_statistics
+    description: Staging model for ONS tax and benefits statistics.
+
+    columns:
+        - name: observation_sk
+        description: Surrogate key for each unique tax and benefits observation.
+        tests:
+            - not_null
+            - unique
+
+        - name: observation_value
+        description: Numeric tax and benefits observation value.
+        tests:
+            - not_null
+
+        - name: financial_or_calendar_year
+        description: Financial or calendar year associated with the observation.
+        tests:
+            - not_null
+
+        - name: time_label
+        description: Human-readable time label from the source data.
+        tests:
+            - not_null
+
+        - name: geography_code
+        description: Geography code for the observation.
+        tests:
+        - not_null
+
+        - name: geography_name
+        description: Human-readable geography name.
+
+        - name: quintile_code
+        description: Code identifying the income quintile group.
+        tests:
+            - not_null
+
+        - name: quintile_name
+        description: Human-readable income quintile group.
+
+        - name: summary_statistic_code
+        description: Code identifying the summary statistic, such as average or percentile.
+        tests:
+        - not_null
+
+        - name: summary_statistic_name
+        description: Human-readable summary statistic name.
+
+        - name: income_type_code
+        description: Code identifying the income type represented by the observation.
+        tests:
+        - not_null
+
+        - name: income_type_name
+        description: Human-readable income type name.
+
+        - name: deflation_basis_code
+        description: Code identifying whether and how the income value has been deflated.
+        tests:
+        - not_null
+
+        - name: deflation_basis_name
+        description: Human-readable deflation basis name.
