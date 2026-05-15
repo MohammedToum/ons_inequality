@@ -1,7 +1,7 @@
 with source as (
 
     select *
-    from {{ source('raw_ons', 'regional_gdp_by_year_time_series') }}
+    from {{ source('raw_ons', 'raw_regional_gdp_by_year') }}
 
 ),
 
@@ -10,22 +10,22 @@ renamed as (
     select
         safe_cast(`v4_1` as numeric) as raw_observation_value,
 
-        nullif(trim(cast(`Data Marking` as string)), '') as data_marking,
+        nullif(trim(cast(`data_marking` as string)), '') as data_marking,
 
-        safe_cast(`calendar-years` as int64) as calendar_year,
+        safe_cast(`calendar_years` as int64) as calendar_year,
         cast(`Time` as string) as time_label,
 
         cast(`nuts` as string) as region_code,
         cast(`Geography` as string) as region_name,
 
-        cast(`sic-unofficial` as string) as industry_code,
-        cast(`UnofficialStandardIndustrialClassification` as string) as industry_name,
+        cast(`sic_unofficial` as string) as industry_code,
+        cast(`unofficial_standard_industrial_classification` as string) as industry_name,
 
-        cast(`type-of-prices` as string) as price_basis_code,
+        cast(`type_of_prices` as string) as price_basis_code,
         cast(`Prices` as string) as price_basis_name,
 
-        cast(`quarterly-index-and-growth-rate` as string) as measure_code,
-        cast(`GrowthRate` as string) as measure_name
+        cast(`quarterly_index_and_growth_rate` as string) as measure_code,
+        cast(`growth_rate` as string) as measure_name
 
     from source
 

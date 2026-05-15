@@ -1,7 +1,7 @@
 with source as (
 
     select *
-    from {{ source('raw_ons', 'suicides_in_the_uk_2023') }}
+    from {{ source('raw_ons', 'raw_suicides_in_the_uk') }}
 
 ),
 
@@ -10,10 +10,10 @@ renamed as (
     select
         safe_cast(`v4_0` as numeric) as observation_value,
 
-        safe_cast(`calendar-years` as int64) as calendar_year,
+        safe_cast(`calendar_years` as int64) as calendar_year,
         cast(`Time` as string) as time_label,
 
-        cast(`administrative-geography` as string) as geography_code,
+        cast(`administrative_geography` as string) as geography_code,
         cast(`Geography` as string) as geography_name
 
     from source

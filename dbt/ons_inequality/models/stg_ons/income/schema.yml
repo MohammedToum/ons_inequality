@@ -2,230 +2,456 @@ version: 2
 
 models:
     - name: stg_regional_gdp_by_quarter
-    description: Staging model for quarterly regional GDP observations from ONS.
+      description: Staging model for quarterly regional GDP observations from ONS.
+      columns:
+          - name: observation_sk
+            description: Surrogate key for each unique quarterly regional GDP observation.
+            data_tests:
+                - not_null
+                - unique
 
-    columns:
-        - name: observation_sk
-        description: Surrogate key for each unique quarterly regional GDP observation.
-        tests:
-            - not_null
-            - unique
+          - name: observation_value
+            description: Numeric GDP observation value after suppressed values are converted to null.
 
-        - name: observation_value
-        description: Numeric GDP observation value after suppressed values are converted to null.
+          - name: data_marking
+            description: ONS data marking flag indicating suppression, reliability, provisionality, or publication caveats.
+            data_tests:
+                - accepted_values:
+                    arguments:
+                        values: ["", "."]
+                        quote: true
 
-        - name: data_marking
-        description: ONS data marking flag indicating suppression, reliability, provisionality, or publication caveats.
-        tests:
-            - accepted_values:
-            values: ["", "."]
-            quote: false
+          - name: is_suppressed
+            description: Boolean flag showing whether the observation value has been suppressed due to an ONS data marking.
+            data_tests:
+                - not_null
+                - accepted_values:
+                    arguments:
+                        values: [true, false]
+                        quote: false
 
-        - name: is_suppressed
-        description: Boolean flag showing whether the observation value has been suppressed due to an ONS data marking.
-        tests:
-            - not_null
-            - accepted_values:
-                values: [true, false]
-                quote: false
+          - name: quarter_id
+            description: ONS quarter identifier for the observation.
+            data_tests:
+                - not_null
 
-        - name: quarter_id
-        description: ONS quarter identifier for the observation.
-        tests:
-            - not_null
+          - name: time_label
+            description: Human-readable time label from the source data.
+            data_tests:
+                - not_null
 
-        - name: time_label
-        description: Human-readable time label from the source data.
-        tests:
-            - not_null
+          - name: year
+            description: Calendar year extracted from the quarter identifier.
+            data_tests:
+                - not_null
 
-        - name: year
-        description: Calendar year extracted from the quarter identifier.
-        tests:
-            - not_null
+          - name: quarter
+            description: Calendar quarter number extracted from the quarter identifier.
+            data_tests:
+                - accepted_values:
+                    arguments:
+                        values: [1, 2, 3, 4]
+                        quote: false
+                - not_null
 
-        - name: quarter
-        description: Calendar quarter number extracted from the quarter identifier.
-        tests:
-            - not_null
-            - accepted_values:
-                values: [1, 2, 3, 4]
-                quote: false
+          - name: region_code
+            description: ONS NUTS geography code for the region.
+            data_tests:
+                - not_null
 
-        - name: region_code
-        description: ONS NUTS geography code for the region.
-        tests:
-            - not_null
+          - name: region_name
+            description: Human-readable region name.
+            data_tests:
+                - accepted_values:
+                    arguments:
+                        values:
+                            - "East Midlands"
+                            - "East of England"
+                            - "England"
+                            - "Extra-regio"
+                            - "London"
+                            - "North East"
+                            - "North West"
+                            - "South East"
+                            - "South West"
+                            - "Wales"
+                            - "West Midlands"
+                            - "Yorkshire and The Humber"
 
-        - name: region_name
-        description: Human-readable region name.
-        tests:
-            accepted_values:
-                values:
-                    - "East Midlands"
-                    - "East of England"
-                    - "England"
-                    - "Extra-regio"
-                    - "London"
-                    - "North East"
-                    - "North West"
-                    - "South East"
-                    - "South West"
-                    - "Wales"
-                    - "West Midlands"
-                    - "Yorkshire and The Humber"
+          - name: industry_code
+            description: Industry classification code from the source dataset.
+            data_tests:
+                - accepted_values:
+                    arguments:
+                        values:
+                            - "A"
+                            - "A--T"
+                            - "B"
+                            - "B--E"
+                            - "C"
+                            - "D"
+                            - "E"
+                            - "F"
+                            - "G"
+                            - "G--T"
+                            - "H"
+                            - "I"
+                            - "J"
+                            - "K"
+                            - "L"
+                            - "M"
+                            - "N"
+                            - "O"
+                            - "P"
+                            - "Q"
+                            - "R"
+                            - "S"
+                            - "T"
+                - not_null
 
-        - name: industry_code
-        description: Industry classification code from the source dataset.
-        tests:
-            - not_null
+          - name: industry_name
+            description: Human-readable industry classification name.
+            data_tests:
+                - accepted_values:
+                    arguments:
+                        values:
+                            - "A-T: Total"
+                            - "A: Agriculture, forestry and fishing"
+                            - "B-E: Production Industries"
+                            - "B: Mining and quarrying"
+                            - "C: Manufacturing"
+                            - "D: Electricity, gas, steam and air conditioning supply"
+                            - "E: Water supply; sewerage, waste management and remediation activities"
+                            - "F: Construction"
+                            - "G-T: Services sector"
+                            - "G: Wholesale and retail trade; repair of motor vehicles and motorcycles"
+                            - "H: Transportation and storage"
+                            - "I: Accommodation and food service activities"
+                            - "J: Information and communication"
+                            - "K: Financial and insurance activities"
+                            - "L: Real estate activities"
+                            - "M: Professional, scientific and technical activities"
+                            - "N: Administrative and support service activities"
+                            - "O: Public administration and defence; compulsory social security"
+                            - "P: Education"
+                            - "Q: Human health and social work activities"
+                            - "R: Arts, entertainment and recreation"
+                            - "S: Other service activities"
+                            - "T: Activities of households as employers; undifferentiated goods-and services-producing activities of households for own use"
+                - not_null
 
-        - name: industry_name
-        description: Human-readable industry classification name.
+          - name: price_basis_code
+            description: Code describing the price basis used for the GDP measure.
+            data_tests:
+                - not_null
 
-        - name: price_basis_code
-        description: Code describing the price basis used for the GDP measure.
-        tests:
-            - not_null
+          - name: price_basis_name
+            description: Human-readable price basis name.
 
-        - name: price_basis_name
-        description: Human-readable price basis name.
+          - name: measure_code
+            description: Code identifying whether the observation represents an index, growth rate, or related GDP measure.
+            data_tests:
+                - accepted_values:
+                    arguments:
+                        values: ["grq", "grqa", "qix"]
+                - not_null
 
-        - name: measure_code
-        description: Code identifying whether the observation represents an index, growth rate, or related GDP measure.
-        tests:
-            - not_null
+          - name: measure_name
+            description: Human-readable GDP measure name.
 
-        - name: measure_name
-        description: Human-readable GDP measure name.
+    - name: stg_regional_gdp_by_year
+      description: Staging model for annual regional GDP observations from ONS.
+      columns:
+          - name: observation_sk
+            description: Surrogate key for each unique annual regional GDP observation.
+            data_tests:
+                - not_null
+                - unique
 
-        - name: stg_regional_gdp_by_year
-        description: Staging model for annual regional GDP observations from ONS.
+          - name: observation_value
+            description: Numeric GDP observation value after suppressed values are converted to null.
 
-    columns:
-        - name: observation_sk
-        description: Surrogate key for each unique annual regional GDP observation.
-        tests:
-            - not_null
-            - unique
+          - name: data_marking
+            description: ONS data marking flag indicating suppression, reliability, provisionality, or publication caveats.
 
-        - name: observation_value
-        description: Numeric GDP observation value after suppressed values are converted to null.
+          - name: is_suppressed
+            description: Boolean flag showing whether the observation value has been suppressed due to an ONS data marking.
+            data_tests:
+                - not_null
+                - accepted_values:
+                    arguments:
+                        values: [true, false]
+                        quote: false
 
-        - name: data_marking
-        description: ONS data marking flag indicating suppression, reliability, provisionality, or publication caveats.
+          - name: calendar_year
+            description: Calendar year for the annual GDP observation.
+            data_tests:
+                - accepted_values:
+                    arguments:
+                        values: [2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021]
+                        quote: false
+                - not_null
 
-        - name: is_suppressed
-        description: Boolean flag showing whether the observation value has been suppressed due to an ONS data marking.
-        tests:
-            - not_null
-            - accepted_values:
-                values: [true, false]
-                quote: false
+          - name: time_label
+            description: Human-readable time label from the source data.
+            data_tests:
+                - accepted_values:
+                    arguments:
+                        values: [2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021]
+                - not_null
 
-        - name: calendar_year
-        description: Calendar year for the annual GDP observation.
-        tests:
-            - not_null
+          - name: region_code
+            description: ONS NUTS geography code for the region.
+            data_tests:
+                - accepted_values:
+                    arguments:
+                        values:
+                            - "UK0"
+                            - "UKC"
+                            - "UKD"
+                            - "UKE"
+                            - "UKF"
+                            - "UKG"
+                            - "UKH"
+                            - "UKI"
+                            - "UKJ"
+                            - "UKK"
+                            - "UKL"
+                            - "UKZ"
+                - not_null
 
-        - name: time_label
-        description: Human-readable time label from the source data.
-        tests:
-            - not_null
+          - name: region_name
+            description: Human-readable region name.
+            data_tests:
+                - accepted_values:
+                    arguments:
+                        values:
+                            - "East Midlands"
+                            - "East of England"
+                            - "England"
+                            - "Extra-regio"
+                            - "London"
+                            - "North East"
+                            - "North West"
+                            - "South East"
+                            - "South West"
+                            - "Wales"
+                            - "West Midlands"
+                            - "Yorkshire and The Humber"
 
-        - name: region_code
-        description: ONS NUTS geography code for the region.
-        tests:
-            - not_null
+          - name: industry_code
+            description: Industry classification code from the source dataset.
+            data_tests:
+                - accepted_values:
+                    arguments:
+                        values:
+                            - "A"
+                            - "A--T"
+                            - "B"
+                            - "B--E"
+                            - "C"
+                            - "D"
+                            - "E"
+                            - "F"
+                            - "G"
+                            - "G--T"
+                            - "H"
+                            - "I"
+                            - "J"
+                            - "K"
+                            - "L"
+                            - "M"
+                            - "N"
+                            - "O"
+                            - "P"
+                            - "Q"
+                            - "R"
+                            - "S"
+                            - "T"
+                - not_null
 
-        - name: region_name
-        description: Human-readable region name.
+          - name: industry_name
+            description: Human-readable industry classification name.
+            data_tests:
+                - accepted_values:
+                    arguments:
+                        values:
+                            - "A-T: Total"
+                            - "A: Agriculture, forestry and fishing"
+                            - "B-E: Production Industries"
+                            - "B: Mining and quarrying"
+                            - "C: Manufacturing"
+                            - "D: Electricity, gas, steam and air conditioning supply"
+                            - "E: Water supply; sewerage, waste management and remediation activities"
+                            - "F: Construction"
+                            - "G-T: Services sector"
+                            - "G: Wholesale and retail trade; repair of motor vehicles and motorcycles"
+                            - "H: Transportation and storage"
+                            - "I: Accommodation and food service activities"
+                            - "J: Information and communication"
+                            - "K: Financial and insurance activities"
+                            - "L: Real estate activities"
+                            - "M: Professional, scientific and technical activities"
+                            - "N: Administrative and support service activities"
+                            - "O: Public administration and defence; compulsory social security"
+                            - "P: Education"
+                            - "Q: Human health and social work activities"
+                            - "R: Arts, entertainment and recreation"
+                            - "S: Other service activities"
+                            - "T: Activities of households as employers; undifferentiated goods-and services-producing activities of households for own use"
+                - not_null
 
-        - name: industry_code
-        description: Industry classification code from the source dataset.
-        tests:
-            - not_null
+          - name: price_basis_code
+            description: Code describing the price basis used for the GDP measure.
+            data_tests:
+                - not_null
 
-        - name: industry_name
-        description: Human-readable industry classification name.
+          - name: price_basis_name
+            description: Human-readable price basis name.
 
-        - name: price_basis_code
-        description: Code describing the price basis used for the GDP measure.
-        tests:
-        - not_null
+          - name: measure_code
+            description: Code identifying whether the observation represents an index, growth rate, or related GDP measure.
+            data_tests:
+                - accepted_values:
+                    arguments:
+                        values: ["gra", "aix"]
+                - not_null
 
-        - name: price_basis_name
-        description: Human-readable price basis name.
-
-        - name: measure_code
-        description: Code identifying whether the observation represents an index, growth rate, or related GDP measure.
-        tests:
-            - not_null
-
-        - name: measure_name
-        description: Human-readable GDP measure name.
+          - name: measure_name
+            description: Human-readable GDP measure name.
+            data_tests:
+                - accepted_values:
+                    arguments:
+                        values: ["Annual growth rate", "Annual index"]
 
     - name: stg_tax_benefits_statistics
-    description: Staging model for ONS tax and benefits statistics.
+      description: Staging model for ONS tax and benefits statistics.
+      columns:
+          - name: observation_sk
+            description: Surrogate key for each unique tax and benefits observation.
+            data_tests:
+                - not_null
+                - unique
 
-    columns:
-        - name: observation_sk
-        description: Surrogate key for each unique tax and benefits observation.
-        tests:
-            - not_null
-            - unique
+          - name: observation_value
+            description: Numeric tax and benefits observation value.
+            data_tests:
+                - not_null
 
-        - name: observation_value
-        description: Numeric tax and benefits observation value.
-        tests:
-            - not_null
+          - name: financial_or_calendar_year
+            description: Financial or calendar year associated with the observation.
 
-        - name: financial_or_calendar_year
-        description: Financial or calendar year associated with the observation.
-        tests:
-            - not_null
+          - name: time_label
+            description: Human-readable time label from the source data.
+            data_tests:
+                - not_null
 
-        - name: time_label
-        description: Human-readable time label from the source data.
-        tests:
-            - not_null
+          - name: geography_code
+            description: Geography code for the observation.
+            data_tests:
+                - accepted_values:
+                    arguments:
+                        values: ["K02000001"]
+                - not_null
 
-        - name: geography_code
-        description: Geography code for the observation.
-        tests:
-        - not_null
+          - name: geography_name
+            description: Human-readable geography name.
+            data_tests:
+                - accepted_values:
+                    arguments:
+                        values: ["United Kingdom"]
+                - not_null
 
-        - name: geography_name
-        description: Human-readable geography name.
+          - name: quintile_code
+            description: Code identifying the income quintile group.
+            data_tests:
+                - accepted_values:
+                    arguments:
+                        values:
+                            - "1st"
+                            - "2nd"
+                            - "3rd"
+                            - "4th"
+                            - "5th"
+                            - "all"
+                - not_null
 
-        - name: quintile_code
-        description: Code identifying the income quintile group.
-        tests:
-            - not_null
+          - name: quintile_name
+            description: Human-readable income quintile group.
+            data_tests:
+                - accepted_values:
+                    arguments:
+                        values:
+                            - "1st"
+                            - "2nd"
+                            - "3rd"
+                            - "4th"
+                            - "5th"
+                            - "all"
+                - not_null
 
-        - name: quintile_name
-        description: Human-readable income quintile group.
+          - name: summary_statistic_code
+            description: Code identifying the summary statistic, such as average or percentile.
+            data_tests:
+                - accepted_values:
+                    arguments:
+                        values:
+                            - "mean"
+                            - "median"
+                - not_null
 
-        - name: summary_statistic_code
-        description: Code identifying the summary statistic, such as average or percentile.
-        tests:
-        - not_null
+          - name: summary_statistic_name
+            description: Human-readable summary statistic name.
+            data_tests:
+                - accepted_values:
+                    arguments:
+                        values:
+                            - "mean"
+                            - "median"
+                - not_null
 
-        - name: summary_statistic_name
-        description: Human-readable summary statistic name.
+          - name: income_type_code
+            description: Code identifying the income type represented by the observation.
+            data_tests:
+                - accepted_values:
+                    arguments:
+                        values:
+                            - "disposable"
+                            - "final"
+                            - "gross"
+                            - "original"
+                            - "post-tax"
+                - not_null
 
-        - name: income_type_code
-        description: Code identifying the income type represented by the observation.
-        tests:
-        - not_null
+          - name: income_type_name
+            description: Human-readable income type name.
+            data_tests:
+                - accepted_values:
+                    arguments:
+                        values:
+                            - "Disposable"
+                            - "Final"
+                            - "Gross"
+                            - "Original"
+                            - "Post-tax"
+                - not_null
 
-        - name: income_type_name
-        description: Human-readable income type name.
+          - name: deflation_basis_code
+            description: Code identifying whether and how the income value has been deflated.
+            data_tests:
+                - accepted_values:
+                    arguments:
+                        values:
+                            - "deflated-value"
+                            - "undeflated-value"
+                - not_null
 
-        - name: deflation_basis_code
-        description: Code identifying whether and how the income value has been deflated.
-        tests:
-        - not_null
-
-        - name: deflation_basis_name
-        description: Human-readable deflation basis name.
+          - name: deflation_basis_name
+            description: Human-readable deflation basis name.
+            data_tests:
+                - accepted_values:
+                    arguments:
+                        values:
+                            - "Deflated value"
+                            - "Undeflated value"
+                - not_null

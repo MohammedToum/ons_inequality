@@ -175,6 +175,20 @@ dbt-debug:
 		--project-dir $(DBT_PROJECT_DIR) \
 		--profiles-dir $(DBT_PROFILES_DIR)
 
+dbt-deps:
+	$(call require_airflow_container)
+	$(call banner,Running dbt deps inside Airflow container...)
+	docker exec -it $(AIRFLOW_EXEC_CONTAINER) dbt deps \
+		--project-dir $(DBT_PROJECT_DIR) \
+		--profiles-dir $(DBT_PROFILES_DIR)	
+
+dbt-compile:
+	$(call require_airflow_container)
+	$(call banner,Running dbt compile inside Airflow container...)
+	docker exec -it $(AIRFLOW_EXEC_CONTAINER) dbt compile \
+		--project-dir $(DBT_PROJECT_DIR) \
+		--profiles-dir $(DBT_PROFILES_DIR)
+
 dbt-run:
 	$(call require_airflow_container)
 	$(call banner,Running dbt run inside Airflow container...)

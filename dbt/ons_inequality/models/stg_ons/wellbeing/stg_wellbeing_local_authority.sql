@@ -1,7 +1,7 @@
 with source as (
 
     select *
-    from {{ source('raw_ons', 'wellbeing_local_authority_time_series') }}
+    from {{ source('raw_ons', 'raw_wellbeing_local_authority') }}
 
 ),
 
@@ -10,24 +10,24 @@ renamed as (
     select
         safe_cast(`v4_3` as numeric) as raw_observation_value,
 
-        nullif(trim(cast(`Data marking` as string)), '') as data_marking,
+        nullif(trim(cast(`data_marking` as string)), '') as data_marking,
 
-        safe_cast(`Lower limit` as numeric) as raw_lower_confidence_limit,
-        safe_cast(`Upper limit` as numeric) as raw_upper_confidence_limit,
+        safe_cast(`lower_limit` as numeric) as raw_lower_confidence_limit,
+        safe_cast(`upper_limit` as numeric) as raw_upper_confidence_limit,
 
-        cast(`yyyy-yy` as string) as financial_year_id,
+        cast(`yyyy_yy` as string) as financial_year_id,
         cast(`Time` as string) as time_label,
 
-        safe_cast(substr(`yyyy-yy`, 1, 4) as int64) as start_year,
-        safe_cast(concat('20', substr(`yyyy-yy`, 6, 2)) as int64) as end_year,
+        safe_cast(substr(`yyyy_yy`, 1, 4) as int64) as start_year,
+        safe_cast(concat('20', substr(`yyyy_yy`, 6, 2)) as int64) as end_year,
 
-        cast(`administrative-geography` as string) as geography_code,
+        cast(`administrative_geography` as string) as geography_code,
         cast(`Geography` as string) as geography_name,
 
-        cast(`measure-of-wellbeing` as string) as wellbeing_measure_code,
-        cast(`MeasureOfWellbeing` as string) as wellbeing_measure_name,
+        cast(`measure_of_wellbeing` as string) as wellbeing_measure_code,
+        cast(`measure_of_wellbeing` as string) as wellbeing_measure_name,
 
-        cast(`wellbeing-estimate` as string) as wellbeing_estimate_code,
+        cast(`wellbeing_estimate` as string) as wellbeing_estimate_code,
         cast(`Estimate` as string) as wellbeing_estimate_name
 
     from source

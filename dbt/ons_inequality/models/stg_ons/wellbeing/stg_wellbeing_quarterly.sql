@@ -1,7 +1,7 @@
 with source as (
 
     select *
-    from {{ source('raw_ons', 'wellbeing_quarterly_time_series') }}
+    from {{ source('raw_ons', 'raw_wellbeing_quarterly') }}
 
 ),
 
@@ -13,23 +13,23 @@ renamed as (
         safe_cast(`LCL` as numeric) as lower_confidence_limit,
         safe_cast(`UCL` as numeric) as upper_confidence_limit,
 
-        cast(`yyyy-qq` as string) as quarter_id,
+        cast(`yyyy_qq` as string) as quarter_id,
         cast(`Time` as string) as time_label,
 
-        safe_cast(substr(`yyyy-qq`, 1, 4) as int64) as year,
-        safe_cast(regexp_extract(`yyyy-qq`, r'q([1-4])') as int64) as quarter,
+        safe_cast(substr(`yyyy_qq`, 1, 4) as int64) as year,
+        safe_cast(regexp_extract(`yyyy_qq`, r'q([1-4])') as int64) as quarter,
 
-        cast(`uk-only` as string) as geography_code,
+        cast(`uk_only` as string) as geography_code,
         cast(`Geography` as string) as geography_name,
 
-        cast(`measure-of-wellbeing` as string) as wellbeing_measure_code,
-        cast(`MeasureOfWellbeing` as string) as wellbeing_measure_name,
+        cast(`measure_of_wellbeing` as string) as wellbeing_measure_code,
+        cast(`measure_of_wellbeing` as string) as wellbeing_measure_name,
 
-        cast(`wellbeing-estimate` as string) as wellbeing_estimate_code,
+        cast(`wellbeing_estimate` as string) as wellbeing_estimate_code,
         cast(`Estimate` as string) as wellbeing_estimate_name,
 
-        cast(`seasonal-adjustment` as string) as seasonal_adjustment_code,
-        cast(`SeasonalAdjustment` as string) as seasonal_adjustment_name
+        cast(`seasonal_adjustment` as string) as seasonal_adjustment_code,
+        cast(`seasonal_adjustment` as string) as seasonal_adjustment_name
 
     from source
 
