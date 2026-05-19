@@ -1,0 +1,46 @@
+version: 2
+models:
+    - name: int_local_authority_districts
+      description: >
+          Intermediate lookup model mapping English local authorities to their
+          corresponding statistical regions using official ONS geography reference data.
+      columns:
+          - name: local_authority_sk
+            description: Surrogate key generated from the local authority code.
+            tests:
+                - not_null
+                - unique
+          - name: local_authority_code
+            description: Official ONS local authority code.
+            tests:
+                - not_null
+                - unique
+          - name: local_authority_name
+            description: Official ONS local authority name.
+            tests:
+                - not_null
+          - name: region_code
+            description: Official ONS region code for the associated English region.
+            tests:
+                - not_null
+          - name: region_name
+            description: Official ONS region name for the associated English region.
+            tests:
+                - not_null
+                - accepted_values:
+                      arguments:
+                          values:
+                              - North East
+                              - North West
+                              - Yorkshire and The Humber
+                              - East Midlands
+                              - West Midlands
+                              - East of England
+                              - London
+                              - South East
+                              - South West
+                              - Scotland
+                              - Wales
+                              - Northern Ireland
+          - name: object_id
+            description: Source system object identifier from the original ONS lookup file.

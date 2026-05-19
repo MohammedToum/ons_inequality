@@ -1,3 +1,33 @@
+{{
+    config(
+            materialized='view',
+            schema='stg_ons',
+            description="""
+                        Staging model for quarterly regional GDP observations from ONS.
+
+                        Grain:
+                            One GDP observation per geography, year, quarter, industry, measure, and pricing basis.
+
+                        Natural keys:
+                            region_code/region_name, year, quarter, industry_code/industry_name,
+                            price_basis_code/price_basis_name, measure_code/measure_name.
+
+                        Time columns:
+                            quarter_id, time_label, year, quarter.
+
+                        Geography columns:
+                            region_code, region_name.
+
+                        Industry columns:
+                            industry_code, industry_name.
+
+                        Measure/value columns:
+                            observation_value, data_marking, is_suppressed, price_basis_code/price_basis_name,
+                            measure_code/measure_name.
+                    """
+    )
+}}
+
 with source as (
 
     select *

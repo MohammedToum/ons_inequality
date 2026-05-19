@@ -1,0 +1,128 @@
+Local Authority Code,Local Authority Name,Region Code,Region Name,ObjectId
+E12000001,North East,E12000001,North East,7
+E11000007,Tyne and Wear,E12000001,North East,14
+E07000026,Allerdale,E12000002,North West,15
+E07000027,Barrow-in-Furness,E12000002,North West,16
+E07000028,Carlisle,E12000002,North West,22
+E07000029,Copeland,E12000002,North West,26
+E10000006,Cumbria,E12000002,North West,28
+E07000030,Eden,E12000002,North West,29
+E11000001,Greater Manchester,E12000002,North West,31
+E10000017,Lancashire,E12000002,North West,35
+E11000002,Merseyside,E12000002,North West,39
+E12000002,North West,E12000002,North West,40
+E07000031,South Lakeland,E12000002,North West,49
+E07000163,Craven,E12000003,Yorkshire and The Humber,64
+E07000164,Hambleton,E12000003,Yorkshire and The Humber,67
+E07000165,Harrogate,E12000003,Yorkshire and The Humber,68
+E10000023,North Yorkshire,E12000003,Yorkshire and The Humber,75
+E07000166,Richmondshire,E12000003,Yorkshire and The Humber,76
+E07000167,Ryedale,E12000003,Yorkshire and The Humber,78
+E07000168,Scarborough,E12000003,Yorkshire and The Humber,79
+E07000169,Selby,E12000003,Yorkshire and The Humber,80
+E11000003,South Yorkshire,E12000003,Yorkshire and The Humber,82
+E11000006,West Yorkshire,E12000003,Yorkshire and The Humber,84
+E12000003,Yorkshire and The Humber,E12000003,Yorkshire and The Humber,86
+E10000007,Derbyshire,E12000004,East Midlands,97
+E12000004,East Midlands,E12000004,East Midlands,100
+E10000018,Leicestershire,E12000004,East Midlands,107
+E10000019,Lincolnshire,E12000004,East Midlands,109
+E10000024,Nottinghamshire,E12000004,East Midlands,118
+E10000028,Staffordshire,E12000005,West Midlands,146
+E10000031,Warwickshire,E12000005,West Midlands,154
+E12000005,West Midlands,E12000005,West Midlands,155
+E10000034,Worcestershire,E12000005,West Midlands,158
+E10000003,Cambridgeshire,E12000006,East of England,170
+E12000006,East of England,E12000006,East of England,179
+E10000012,Essex,E12000006,East of England,181
+E10000015,Hertfordshire,E12000006,East of England,185
+E10000020,Norfolk,E12000006,East of England,193
+E10000029,Suffolk,E12000006,East of England,204
+E13000001,Inner London,E12000007,London,230
+E12000007,London,E12000007,London,236
+E13000002,Outer London,E12000007,London,239
+E10000011,East Sussex,E12000008,South East,262
+E10000014,Hampshire,E12000008,South East,272
+E10000016,Kent,E12000008,South East,278
+E10000025,Oxfordshire,E12000008,South East,287
+E12000008,South East,E12000008,South East,296
+E10000030,Surrey,E12000008,South East,300
+E10000032,West Sussex,E12000008,South East,313
+E10000008,Devon,E12000009,South West,325
+E10000013,Gloucestershire,E12000009,South West,331
+E07000187,Mendip,E12000009,South West,333
+E07000188,Sedgemoor,E12000009,South West,338
+E10000027,Somerset,E12000009,South West,340
+E07000246,Somerset West and Taunton,E12000009,South West,341
+E07000189,South Somerset,E12000009,South West,344
+E12000009,South West,E12000009,South West,345
+E92000001,England,E92000001,England,354
+N09000001,Antrim and Newtownabbey,N92000002,Northern Ireland,355
+N09000011,Ards and North Down,N92000002,Northern Ireland,356
+N09000002,"Armagh City, Banbridge and Craigavon",N92000002,Northern Ireland,357
+N09000003,Belfast,N92000002,Northern Ireland,358
+N09000004,Causeway Coast and Glens,N92000002,Northern Ireland,359
+N09000005,Derry City and Strabane,N92000002,Northern Ireland,360
+N09000006,Fermanagh and Omagh,N92000002,Northern Ireland,361
+N09000007,Lisburn and Castlereagh,N92000002,Northern Ireland,362
+N09000009,Mid Ulster,N92000002,Northern Ireland,363
+N09000008,Mid and East Antrim,N92000002,Northern Ireland,364
+N09000010,"Newry, Mourne and Down",N92000002,Northern Ireland,365
+N92000002,Northern Ireland,N92000002,Northern Ireland,366
+S12000033,Aberdeen City,S92000003,Scotland,367
+S12000034,Aberdeenshire,S92000003,Scotland,368
+S12000041,Angus,S92000003,Scotland,369
+S12000035,Argyll and Bute,S92000003,Scotland,370
+S12000036,City of Edinburgh,S92000003,Scotland,371
+S12000005,Clackmannanshire,S92000003,Scotland,372
+S12000006,Dumfries and Galloway,S92000003,Scotland,373
+S12000042,Dundee City,S92000003,Scotland,374
+S12000008,East Ayrshire,S92000003,Scotland,375
+S12000045,East Dunbartonshire,S92000003,Scotland,376
+S12000010,East Lothian,S92000003,Scotland,377
+S12000011,East Renfrewshire,S92000003,Scotland,378
+S12000014,Falkirk,S92000003,Scotland,379
+S12000047,Fife,S92000003,Scotland,380
+S12000049,Glasgow City,S92000003,Scotland,381
+S12000017,Highland,S92000003,Scotland,382
+S12000018,Inverclyde,S92000003,Scotland,383
+S12000019,Midlothian,S92000003,Scotland,384
+S12000020,Moray,S92000003,Scotland,385
+S12000013,Na h-Eileanan Siar,S92000003,Scotland,386
+S12000021,North Ayrshire,S92000003,Scotland,387
+S12000050,North Lanarkshire,S92000003,Scotland,388
+S12000023,Orkney Islands,S92000003,Scotland,389
+S12000048,Perth and Kinross,S92000003,Scotland,390
+S12000038,Renfrewshire,S92000003,Scotland,391
+S92000003,Scotland,S92000003,Scotland,392
+S12000026,Scottish Borders,S92000003,Scotland,393
+S12000027,Shetland Islands,S92000003,Scotland,394
+S12000028,South Ayrshire,S92000003,Scotland,395
+S12000029,South Lanarkshire,S92000003,Scotland,396
+S12000030,Stirling,S92000003,Scotland,397
+S12000039,West Dunbartonshire,S92000003,Scotland,398
+S12000040,West Lothian,S92000003,Scotland,399
+W06000019,Blaenau Gwent,W92000004,Wales,400
+W06000013,Bridgend,W92000004,Wales,401
+W06000018,Caerphilly,W92000004,Wales,402
+W06000015,Cardiff,W92000004,Wales,403
+W06000010,Carmarthenshire,W92000004,Wales,404
+W06000008,Ceredigion,W92000004,Wales,405
+W06000003,Conwy,W92000004,Wales,406
+W06000004,Denbighshire,W92000004,Wales,407
+W06000005,Flintshire,W92000004,Wales,408
+W06000002,Gwynedd,W92000004,Wales,409
+W06000001,Isle of Anglesey,W92000004,Wales,410
+W06000024,Merthyr Tydfil,W92000004,Wales,411
+W06000021,Monmouthshire,W92000004,Wales,412
+W06000012,Neath Port Talbot,W92000004,Wales,413
+W06000022,Newport,W92000004,Wales,414
+W06000009,Pembrokeshire,W92000004,Wales,415
+W06000023,Powys,W92000004,Wales,416
+W06000016,Rhondda Cynon Taf,W92000004,Wales,417
+W06000011,Swansea,W92000004,Wales,418
+W06000020,Torfaen,W92000004,Wales,419
+W06000014,Vale of Glamorgan,W92000004,Wales,420
+W92000004,Wales,W92000004,Wales,421
+W06000006,Wrexham,W92000004,Wales,422
+K02000001,United Kingdom,K02000001,United Kingdom,423

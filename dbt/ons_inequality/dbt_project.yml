@@ -43,3 +43,7 @@ models:
     marts_ons:
       +schema: mart_ons
       +materialized: table
+
+seeds:
+  ons_inequality:
+    +schema: raw_ons

@@ -1,11 +1,6 @@
 data_marking_code,data_marking_reason,is_suppressed,is_low_quality,description
-
 .,missing_or_unavailable,true,false,Value is missing unavailable or not applicable
-
 X,suppressed_for_confidentiality,true,false,Value suppressed for disclosure control or confidentiality
-
 C,confidential,true,false,Value marked confidential
-
 W,withheld_or_low_quality,true,true,Value withheld or considered low quality
-
 U,unreliable_estimate,true,true,Estimate is unreliable

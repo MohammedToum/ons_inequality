@@ -189,6 +189,13 @@ dbt-compile:
 		--project-dir $(DBT_PROJECT_DIR) \
 		--profiles-dir $(DBT_PROFILES_DIR)
 
+dbt-seed:
+	$(call require_airflow_container)
+	$(call banner,Running dbt seed inside Airflow container...)
+	docker exec -it $(AIRFLOW_EXEC_CONTAINER) dbt seed \
+		--project-dir $(DBT_PROJECT_DIR) \
+		--profiles-dir $(DBT_PROFILES_DIR)
+
 dbt-run:
 	$(call require_airflow_container)
 	$(call banner,Running dbt run inside Airflow container...)
