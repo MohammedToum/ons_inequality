@@ -1,0 +1,33 @@
+version: 2
+models:
+    - name: int_data_markings
+      description: >
+          Intermediate model standardizing ONS data marking codes and descriptions
+          for consistent use across datasets, enabling clear identification of data quality issues.
+      columns:
+          - name: data_marking_sk
+            description: Surrogate key generated from the data marking code.
+            tests:
+                - not_null
+                - unique
+          - name: data_marking_code
+            description: Official ONS code indicating the reason for data marking (e.g., suppression, low quality).
+            tests:
+                - not_null
+                - unique
+          - name: data_marking_reason
+            description: Detailed reason for the data marking as provided by ONS.
+            tests:
+                - not_null
+          - name: is_suppressed
+            description: Boolean flag indicating whether the data is suppressed due to confidentiality concerns.
+            tests:
+                - not_null
+          - name: is_low_quality
+            description: Boolean flag indicating whether the data is marked as low quality by ONS.
+            tests:
+                - not_null
+          - name: data_marking_description
+            description: Human-readable description of the data marking for easier interpretation.
+            tests:
+                - not_null

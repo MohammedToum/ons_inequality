@@ -13,7 +13,7 @@
                             price_basis_code/price_basis_name, measure_code/measure_name.
 
                         Time columns:
-                            year, time_label.
+                            year, time_label, time_grain.
                             
                         Geography columns:
                             region_code, region_name.
@@ -44,6 +44,7 @@ renamed as (
 
         safe_cast(`calendar_years` as int64) as calendar_year,
         cast(`Time` as string) as time_label,
+        `Annual` as time_grain,
 
         cast(`nuts` as string) as region_code,
         cast(`Geography` as string) as region_name,
@@ -69,7 +70,8 @@ final as (
             'region_code',
             'industry_code',
             'price_basis_code',
-            'measure_code'
+            'measure_code',
+            'time_grain'
         ]) }} as observation_sk,
 
         case
@@ -86,6 +88,7 @@ final as (
 
         calendar_year,
         time_label,
+        time_grain,
         region_code,
         region_name,
         industry_code,

@@ -29,7 +29,7 @@ renamed as (
         cast(`Estimate` as string) as wellbeing_estimate_name,
 
         cast(`seasonal_adjustment` as string) as seasonal_adjustment_code,
-        cast(`seasonal_adjustment` as string) as seasonal_adjustment_name
+        cast(`SeasonalAdjustment` as string) as seasonal_adjustment_name
 
     from source
 
@@ -68,3 +68,8 @@ final as (
 
 select *
 from final
+where year between {{ var('start_year') }} and {{ var('end_year') }}
+    and quarter between {{ var('start_quarter') }} and {{ var('end_quarter') }}
+/*
+##### NEED TO DOUBLE CHECK THAT THIS LOGIC WORKS FOR MY DAGS ######
+*/

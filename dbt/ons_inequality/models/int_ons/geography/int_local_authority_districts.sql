@@ -25,7 +25,14 @@ with
             object_id
         from renamed
         where local_authority_code is not null
-    )
+        and local_authority_name not in (
+            'Wales',
+            'Scotland',
+            'Northern Ireland',
+            'England',
+            'United Kingdom'
+            )   
+        )
 
 select *
 from final

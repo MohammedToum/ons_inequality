@@ -44,6 +44,7 @@ renamed as (
 
         cast(`yyyy_qq` as string) as quarter_id,
         cast(`Time` as string) as time_label,
+        `Quarterly` as time_grain,
 
         safe_cast(substr(`yyyy_qq`, 1, 4) as int64) as year,
         safe_cast(regexp_extract(`yyyy_qq`, r'q([1-4])') as int64) as quarter,
@@ -72,7 +73,8 @@ final as (
             'region_code',
             'industry_code',
             'price_basis_code',
-            'measure_code'
+            'measure_code',
+            'time_grain'
         ]) }} as observation_sk,
 
         case
@@ -89,6 +91,7 @@ final as (
 
         quarter_id,
         time_label,
+        time_grain,
         year,
         quarter,
         region_code,

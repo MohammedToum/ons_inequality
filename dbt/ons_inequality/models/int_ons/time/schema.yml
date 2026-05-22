@@ -1,0 +1,56 @@
+version: 2
+
+models:
+    - name: int_time_periods
+      description: Canonical lookup of calendar-year and financial-year time periods used by ONS observation fact tables.
+      columns:
+          - name: time_period_sk
+            description: Surrogate key generated from the time period type, start year, and end year.
+            data_tests:
+                - not_null
+                - unique
+
+          - name: time_period_type
+            description: Type of time period.
+            data_tests:
+                - not_null
+                - accepted_values:
+                    arguments:
+                        values: ["calendar_year", "financial_year"]
+
+          - name: time_period_label
+            description: Human-readable label for the time period.
+            data_tests:
+                - not_null
+
+          - name: start_year
+            description: First calendar year included in the time period.
+            data_tests:
+                - not_null
+
+          - name: end_year
+            description: Last calendar year included in the time period.
+            data_tests:
+                - not_null
+
+          - name: start_date
+            description: First date included in the time period.
+            data_tests:
+                - not_null
+
+          - name: end_date
+            description: Last date included in the time period.
+            data_tests:
+                - not_null
+
+          - name: calendar_year
+            description: Calendar year for calendar-year periods. Null for financial-year periods.
+
+          - name: financial_year_label
+            description: Financial year label for financial-year periods. Null for calendar-year periods.
+
+          - name: financial_year_start
+            description: First calendar year in the financial year. Null for calendar-year periods.
+
+          - name: financial_year_end
+            description: Last calendar year in the financial year. Null for calendar-year periods.

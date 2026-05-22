@@ -32,7 +32,7 @@ final as (
         calendar_year,
         time_label,
         geography_code,
-        geography_name
+        geography_name -- one of these is redudant but keeping both for consistency with other models and in case we need to filter by geography name in the future
 
     from renamed
 
@@ -40,3 +40,4 @@ final as (
 
 select *
 from final
+where calendar_year between {{ var('start_year') }} and {{ var('end_year') }}

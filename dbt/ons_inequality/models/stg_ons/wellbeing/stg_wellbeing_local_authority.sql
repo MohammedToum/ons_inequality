@@ -28,8 +28,10 @@ renamed as (
         cast(`measure_of_wellbeing` as string) as wellbeing_measure_name,
 
         cast(`wellbeing_estimate` as string) as wellbeing_estimate_code,
-        cast(`Estimate` as string) as wellbeing_estimate_name
+        cast(`Estimate` as string) as wellbeing_estimate_name,
 
+        cast(null as string) as seasonal_adjustment_code,
+        cast(null as string) as seasonal_adjustment_name
     from source
 
 ),
@@ -41,7 +43,8 @@ final as (
             'financial_year_id',
             'geography_code',
             'wellbeing_measure_code',
-            'wellbeing_estimate_code'
+            'wellbeing_estimate_code',
+            'seasonal_adjustment_code'
         ]) }} as observation_sk,
 
         case
@@ -75,7 +78,9 @@ final as (
         wellbeing_measure_code,
         wellbeing_measure_name,
         wellbeing_estimate_code,
-        wellbeing_estimate_name
+        wellbeing_estimate_name,
+        seasonal_adjustment_code,
+        seasonal_adjustment_name
 
     from renamed
 
@@ -83,3 +88,5 @@ final as (
 
 select *
 from final
+where calendar_year between {{ var('start_year') }} and {{ var('end_year') }}
+
