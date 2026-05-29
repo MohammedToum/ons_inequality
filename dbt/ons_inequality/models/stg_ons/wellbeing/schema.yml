@@ -1,0 +1,203 @@
+version: 2
+
+models:
+    - name: stg_suicides_in_the_uk
+      description: Staging model for annual suicide observations from ONS.
+      columns:
+          - name: observation_sk
+            description: Surrogate key for each unique suicide observation.
+            data_tests:
+                - not_null
+                - unique
+
+          - name: observation_value
+            description: Numeric suicide observation value.
+            data_tests:
+                - not_null
+
+          - name: calendar_year
+            data_tests:
+                - not_null
+
+          - name: time_label
+            description: Human-readable time label from the source data.
+            data_tests:
+                - not_null
+
+          - name: geography_code
+            description: Human-readable summary statistic name.
+            data_tests:
+                - not_null
+
+          - name: geography_name
+            data_tests:
+                - not_null
+
+    - name: stg_wellbeing_local_authority
+      description: Staging model for local authority wellbeing observations from ONS.
+      columns:
+          - name: observation_sk
+            description: Surrogate key for each unique local authority wellbeing observation.
+            data_tests:
+                - not_null
+                - unique
+
+          - name: observation_value
+            description: Numeric wellbeing observation value after suppressed values are converted to null.
+
+          - name: data_marking
+            description: ONS data marking flag indicating suppression, reliability, provisionality, or publication caveats.
+            data_tests:
+                - relationships:
+                    arguments:
+                        to: ref('int_data_markings')
+                        field: data_marking_code
+
+          - name: is_suppressed
+            description: Boolean flag showing whether the observation value has been suppressed due to an ONS data marking.
+            data_tests:
+                - not_null
+                - accepted_values:
+                    arguments:
+                        values: [true, false]
+                        quote: false
+
+          - name: lower_confidence_limit
+            description: Lower confidence limit for the observation where supplied and not suppressed.
+
+          - name: upper_confidence_limit
+            description: Upper confidence limit for the observation where supplied and not suppressed.
+
+          - name: financial_year_id
+            description: ONS financial year identifier for the observation.
+            data_tests:
+                - not_null
+
+          - name: time_label
+            data_tests:
+                - not_null
+
+          - name: start_year
+            data_tests:
+                - not_null
+
+          - name: end_year
+            data_tests:
+                - not_null
+
+          - name: geography_code
+            description: ONS geography code for the observation. Local authority rows use administrative geography codes; quarterly rows use the UK geography code.
+            data_tests:
+                - not_null
+
+          - name: geography_name
+            data_tests:
+                - not_null
+
+          - name: wellbeing_measure_code
+            description: Wellbeing measure code from the source dataset.
+            data_tests:
+                - not_null
+
+          - name: wellbeing_measure_name
+            data_tests:
+                - not_null
+
+          - name: wellbeing_estimate_code
+            description: Wellbeing estimate code from the source dataset.
+            data_tests:
+                - not_null
+
+          - name: wellbeing_estimate_name
+            data_tests:
+                - not_null
+
+          - name: seasonal_adjustment_code
+            description: Seasonal adjustment code. Null for local authority wellbeing observations.
+
+          - name: seasonal_adjustment_name
+
+    - name: stg_wellbeing_quarterly
+      description: Staging model for quarterly UK wellbeing observations from ONS.
+      columns:
+          - name: observation_sk
+            description: Surrogate key for each unique quarterly wellbeing observation.
+            data_tests:
+                - not_null
+                - unique
+
+          - name: observation_value
+            description: Numeric wellbeing observation value.
+            data_tests:
+                - not_null
+
+          - name: lower_confidence_limit
+            description: Lower confidence limit for the observation.
+
+          - name: upper_confidence_limit
+            description: Upper confidence limit for the observation.
+
+          - name: quarter_id
+            description: ONS quarter identifier for the observation.
+            data_tests:
+                - not_null
+
+          - name: time_label
+            data_tests:
+                - not_null
+
+          - name: year
+            data_tests:
+                - not_null
+
+          - name: quarter
+            description: Calendar quarter number extracted from the quarter identifier.
+            data_tests:
+                - not_null
+                - accepted_values:
+                    arguments:
+                        values: [1, 2, 3, 4]
+                        quote: false
+
+          - name: geography_code
+            description: ONS geography code for the quarterly UK observation. The value "K02000001" is used to represent the UK as a whole.
+            data_tests:
+                - not_null
+                - accepted_values:
+                    arguments:
+                        values: ["K02000001"]
+
+          - name: geography_name
+            data_tests:
+                - not_null
+                - accepted_values:
+                    arguments:
+                        values: ["United Kingdom"]
+
+          - name: wellbeing_measure_code
+            description: Wellbeing measure code from the source dataset.
+            data_tests:
+                - not_null
+
+          - name: wellbeing_measure_name
+            data_tests:
+                - not_null
+
+          - name: wellbeing_estimate_code
+            description: Wellbeing estimate code from the source dataset.
+            data_tests:
+                - not_null
+
+          - name: wellbeing_estimate_name
+            data_tests:
+                - not_null
+
+          - name: seasonal_adjustment_code
+            description: Seasonal adjustment code from the source dataset.
+            data_tests:
+                - not_null
+
+          - name: seasonal_adjustment_name
+            description: Human-readable seasonal adjustment name from the source dataset.
+            data_tests:
+                - not_null

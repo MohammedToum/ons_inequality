@@ -1,10 +1,10 @@
 version: 2
 
 models:
-  - name: int_local_authority_districts
+  - name: dim_local_authorities
     description: >
-      Intermediate lookup model mapping local authorities to their
-      corresponding statistical regions using official ONS geography reference data.
+      Dimension table mapping local authorities to their corresponding ONS
+      statistical regions.
     columns:
       - name: local_authority_sk
         description: Surrogate key generated from the local authority code.
@@ -39,6 +39,7 @@ models:
                   - W92000004
                   - N92000002
       - name: region_name
+        description: Official ONS region name for the associated region.
         data_tests:
           - not_null
           - accepted_values:
@@ -56,13 +57,11 @@ models:
                   - Scotland
                   - Wales
                   - Northern Ireland
-      - name: object_id
-        description: Source system object identifier from the original ONS lookup file.
 
-  - name: int_nations
+  - name: dim_nations
     description: >
-      Intermediate lookup model of UK nations and the United Kingdom geography
-      using official ONS geography reference data.
+      Dimension table of UK nations and the United Kingdom geography used in
+      ONS datasets.
     columns:
       - name: nation_sk
         description: Surrogate key generated from the nation code.
@@ -95,3 +94,42 @@ models:
                   - Northern Ireland
                   - England
 
+  - name: dim_geographies
+    description: >
+      Unified geography dimension for ONS fact tables across local authority,
+      region, nation, United Kingdom, and GDP NUTS geographies.
+    columns:
+      - name: geography_sk
+        description: Surrogate key generated from the geography code.
+        data_tests:
+          - not_null
+          - unique
+      - name: geography_code
+        description: Natural ONS or NUTS geography code used by source observations.
+        data_tests:
+          - not_null
+          - unique
+      - name: geography_name
+        description: Human-readable geography name.
+        data_tests:
+          - not_null
+      - name: geography_level
+        description: Geography grain represented by the row.
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values:
+                  - local_authority
+                  - region
+                  - nation
+                  - united_kingdom
+                  - nuts_region
+      - name: parent_region_code
+        description: Parent region code where the geography sits below region level.
+      - name: parent_region_name
+        description: Parent region name where the geography sits below region level.
+      - name: parent_nation_code
+        description: Parent nation code where applicable.
+      - name: parent_nation_name
+        description: Parent nation name where applicable.

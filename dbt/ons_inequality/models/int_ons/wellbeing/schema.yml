@@ -1,0 +1,164 @@
+version: 2
+
+models:
+  - name: int_suicide_observations_current
+    description: >
+      Current-state suicide observations from the ONS suicides in the UK
+      dataset before snapshotting.
+    columns:
+      - name: suicide_observation_sk
+        description: Surrogate key generated from the source observation key.
+        data_tests:
+          - not_null
+          - unique
+      - name: source_observation_sk
+        description: Observation surrogate key from the upstream staging model.
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('stg_suicides_in_the_uk')
+                field: observation_sk
+      - name: observation_value
+        data_tests:
+          - not_null
+      - name: time_period_type
+        description: Normalised time grain for the observation.
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values:
+                  - calendar_year
+      - name: time_period_id
+        description: Source period identifier for the observation.
+        data_tests:
+          - not_null
+      - name: time_label
+        data_tests:
+          - not_null
+      - name: calendar_year
+        data_tests:
+          - not_null
+      - name: geography_code
+        description: ONS geography code for the observation. Local authority rows use administrative geography codes; quarterly rows use the UK geography code.
+        data_tests:
+          - not_null
+      - name: geography_name
+        data_tests:
+          - not_null
+
+  - name: int_wellbeing_observations_current
+    description: >
+      Current-state wellbeing observations from the ONS local authority and
+      quarterly wellbeing datasets, normalised to a shared observation shape
+      before snapshotting.
+    columns:
+      - name: wellbeing_observation_sk
+        description: Surrogate key generated from the source dataset and source observation key.
+        data_tests:
+          - not_null
+          - unique
+      - name: source_dataset
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values:
+                  - wellbeing_local_authority
+                  - wellbeing_quarterly
+      - name: source_observation_sk
+        description: Observation surrogate key from the upstream staging model.
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('stg_wellbeing_local_authority')
+                field: observation_sk
+              config:
+                where: "source_dataset = 'wellbeing_local_authority'"
+          - relationships:
+              arguments:
+                to: ref('stg_wellbeing_quarterly')
+                field: observation_sk
+              config:
+                where: "source_dataset = 'wellbeing_quarterly'"
+      - name: observation_value
+        description: Numeric wellbeing observation value. Null when suppressed in the source data.
+      - name: data_marking
+        description: ONS data marking code where supplied by the source dataset.
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('int_data_markings')
+                field: data_marking_code
+      - name: is_suppressed
+        description: Boolean flag indicating whether the observation value is suppressed.
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values:
+                  - true
+                  - false
+                quote: false
+      - name: lower_confidence_limit
+        description: Lower confidence limit for the observation where supplied and not suppressed.
+      - name: upper_confidence_limit
+        description: Upper confidence limit for the observation where supplied and not suppressed.
+      - name: time_period_type
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values:
+                  - financial_year
+                  - quarter
+      - name: time_period_id
+        description: Source period identifier, such as financial year or year-quarter.
+        data_tests:
+          - not_null
+      - name: time_label
+        data_tests:
+          - not_null
+      - name: start_year
+        data_tests:
+          - not_null
+      - name: end_year
+        data_tests:
+          - not_null
+      - name: calendar_year
+      - name: quarter
+        data_tests:
+          - accepted_values:
+              arguments:
+                values:
+                  - 1
+                  - 2
+                  - 3
+                  - 4
+                quote: false
+      - name: geography_code
+        description: ONS geography code for the observation. Local authority rows use administrative geography codes; quarterly rows use the UK geography code.
+        data_tests:
+          - not_null
+      - name: geography_name
+        data_tests:
+          - not_null
+      - name: wellbeing_measure_code
+        description: Wellbeing measure code from the source dataset.
+        data_tests:
+          - not_null
+      - name: wellbeing_measure_name
+        data_tests:
+          - not_null
+      - name: wellbeing_estimate_code
+        description: Wellbeing estimate code from the source dataset.
+        data_tests:
+          - not_null
+      - name: wellbeing_estimate_name
+        data_tests:
+          - not_null
+      - name: seasonal_adjustment_code
+        description: Seasonal adjustment code where supplied by the quarterly dataset.
+      - name: seasonal_adjustment_name

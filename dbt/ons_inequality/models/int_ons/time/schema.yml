@@ -19,27 +19,22 @@ models:
                         values: ["calendar_year", "financial_year"]
 
           - name: time_period_label
-            description: Human-readable label for the time period.
             data_tests:
                 - not_null
 
           - name: start_year
-            description: First calendar year included in the time period.
             data_tests:
                 - not_null
 
           - name: end_year
-            description: Last calendar year included in the time period.
             data_tests:
                 - not_null
 
           - name: start_date
-            description: First date included in the time period.
             data_tests:
                 - not_null
 
           - name: end_date
-            description: Last date included in the time period.
             data_tests:
                 - not_null
 
@@ -50,7 +45,5 @@ models:
             description: Financial year label for financial-year periods. Null for calendar-year periods.
 
           - name: financial_year_start
-            description: First calendar year in the financial year. Null for calendar-year periods.
 
           - name: financial_year_end
-            description: Last calendar year in the financial year. Null for calendar-year periods.

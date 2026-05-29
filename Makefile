@@ -19,15 +19,19 @@ SRC_DIR     := src
 
 COMPOSE := docker compose
 
-AIRFLOW_SCHEDULER := $(shell docker ps --format '{{.Names}}' | grep airflow-scheduler | head -n 1)
-AIRFLOW_WEBSERVER := $(shell docker ps --format '{{.Names}}' | grep airflow-webserver | head -n 1)
+AIRFLOW_SCHEDULER = $(shell docker ps --format '{{.Names}}' | grep airflow-scheduler | head -n 1)
+AIRFLOW_WEBSERVER = $(shell docker ps --format '{{.Names}}' | grep airflow-webserver | head -n 1)
 
 # Airflow 3 local executor setups may not have a worker.
 # Prefer worker if it exists, otherwise use scheduler for exec commands.
-AIRFLOW_EXEC_CONTAINER := $(shell docker ps --format '{{.Names}}' | grep -E 'airflow-worker|airflow-scheduler' | head -n 1)
+AIRFLOW_EXEC_CONTAINER = $(shell docker ps --format '{{.Names}}' | grep -E 'airflow-worker|airflow-scheduler' | head -n 1)
 
 DBT_PROJECT_DIR  := /opt/airflow/dbt/ons_inequality
 DBT_PROFILES_DIR := /opt/airflow/dbt/profiles
+
+DBT_LOCAL_PROJECT_DIR  := $(DBT_DIR)/ons_inequality
+DBT_LOCAL_PROFILES_DIR := $(DBT_DIR)/profiles
+UV_CACHE_DIR           := .uv-cache
 
 # ============================================================
 # HELPER MACROS
@@ -166,7 +170,13 @@ airflow-ingest-one:
 # DBT INSIDE AIRFLOW CONTAINER
 # ============================================================
 
-.PHONY: dbt-debug dbt-run dbt-build dbt-test dbt-clean dbt-docs
+.PHONY: dbt-parse dbt-debug dbt-run dbt-build dbt-test dbt-clean dbt-docs dbt-ls dbt-sf
+
+dbt-parse:
+	$(call banner,Parsing local dbt project...)
+	UV_CACHE_DIR=$(UV_CACHE_DIR) uv run dbt parse \
+		--project-dir $(DBT_LOCAL_PROJECT_DIR) \
+		--profiles-dir $(DBT_LOCAL_PROFILES_DIR)
 
 dbt-debug:
 	$(call require_airflow_container)

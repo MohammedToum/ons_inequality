@@ -8,7 +8,7 @@ select
     end_date,
     calendar_year,
     -- add financial year SK to time periods for easier joining
-     {{ dbt_utils.surrogate_key(
+     {{ dbt_utils.generate_surrogate_key(
         ["financial_year_label", "financial_year_start", "financial_year_end"]
      ) }} as financial_year_sk,
     financial_year_label,

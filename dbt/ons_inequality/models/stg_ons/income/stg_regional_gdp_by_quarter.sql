@@ -40,7 +40,10 @@ renamed as (
     select
         safe_cast(`v4_1` as numeric) as raw_observation_value,
 
-        nullif(trim(cast(`data_marking` as string)), '') as data_marking,
+        nullif(
+            upper(replace(replace(trim(cast(`data_marking` as string)), '[', ''), ']', '')),
+            ''
+        ) as data_marking,
 
         cast(`yyyy_qq` as string) as quarter_id,
         cast(`Time` as string) as time_label,
@@ -78,14 +81,14 @@ final as (
         ]) }} as observation_sk,
 
         case
-            when data_marking in ('.', 'x', 'c', '[x]', '[c]', '[w]', '[u]') then null
+            when data_marking in ('.', 'X', 'C', 'W', 'U') then null
             else raw_observation_value
         end as observation_value,
 
         data_marking,
 
         case
-            when data_marking in ('.', 'x', 'c', '[x]', '[c]', '[w]', '[u]') then true
+            when data_marking in ('.', 'X', 'C', 'W', 'U') then true
             else false
         end as is_suppressed,
 

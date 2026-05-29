@@ -5,4 +5,4 @@ select
     is_suppressed,
     is_low_quality,
     desctiption AS `data_marking_description`
-from {{ ref("data_marking_values") }}
+from {{ ref("seed_data_marking_values_lookup") }}

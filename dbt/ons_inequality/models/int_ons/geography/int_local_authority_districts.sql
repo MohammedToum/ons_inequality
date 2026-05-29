@@ -1,7 +1,7 @@
 with
     source as (
         select *
-        from {{ ref("local_authority_district_to_region_dec_2024_lookup_extended") }}
+        from {{ ref("seed_local_authority_to_region_lookup") }}
     ),
 
     renamed as (

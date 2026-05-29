@@ -1,0 +1,367 @@
+version: 2
+
+models:
+  - name: fct_regional_gdp_observations
+    description: >
+      SCD type 2 fact table for regional GDP observations from ONS annual
+      and quarterly datasets.
+    columns:
+      - name: regional_gdp_observation_sk
+        description: Surrogate key generated from the source dataset and source observation key.
+        data_tests:
+          - not_null
+      - name: source_dataset
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values:
+                  - reg_gdp_by_year
+                  - reg_gdp_by_quarter
+      - name: source_observation_sk
+        description: Observation surrogate key from the upstream staging model.
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('stg_regional_gdp_by_year')
+                field: observation_sk
+              config:
+                where: "source_dataset = 'reg_gdp_by_year'"
+          - relationships:
+              arguments:
+                to: ref('stg_regional_gdp_by_quarter')
+                field: observation_sk
+              config:
+                where: "source_dataset = 'reg_gdp_by_quarter'"
+      - name: observation_value
+        description: Numeric GDP observation value. Null when suppressed in the source data.
+      - name: data_marking
+        description: ONS data marking code where supplied by the source dataset.
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('dim_data_marking')
+                field: data_marking_code
+      - name: is_suppressed
+        description: Boolean flag indicating whether the observation value is suppressed.
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: [true, false]
+                quote: false
+      - name: time_period_sk
+        description: Surrogate key to dim_time_periods for calendar-year rows. Null for quarter rows.
+        data_tests:
+          - not_null:
+              config:
+                where: "time_period_type = 'calendar_year'"
+          - relationships:
+              arguments:
+                to: ref('dim_time_periods')
+                field: time_period_sk
+      - name: time_quarter_sk
+        description: Surrogate key to dim_time_quarters for quarter rows. Null for calendar-year rows.
+        data_tests:
+          - not_null:
+              config:
+                where: "time_period_type = 'quarter'"
+          - relationships:
+              arguments:
+                to: ref('dim_time_quarters')
+                field: time_quarter_sk
+      - name: time_period_type
+        description: Normalised time grain for the observation.
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values:
+                  - calendar_year
+                  - quarter
+      - name: time_period_id
+        description: Source period identifier, such as calendar year or year-quarter.
+        data_tests:
+          - not_null
+      - name: time_label
+        description: Human-readable source time label for the observation.
+        data_tests:
+          - not_null
+      - name: time_grain
+        description: Source time grain for the regional GDP observation.
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values:
+                  - annual
+                  - quarterly
+      - name: calendar_year
+        data_tests:
+          - not_null
+      - name: quarter
+        data_tests:
+          - accepted_values:
+              arguments:
+                values:
+                  - 1
+                  - 2
+                  - 3
+                  - 4
+                quote: false
+      - name: geography_sk
+        description: Surrogate key to dim_geographies for the observation region.
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_geographies')
+                field: geography_sk
+      - name: region_code
+        description: ONS NUTS geography code for the region.
+        data_tests:
+          - not_null
+      - name: region_name
+        data_tests:
+          - not_null
+      - name: industry_code
+        description: Industry classification code from the source dataset.
+        data_tests:
+          - not_null
+      - name: industry_name
+        data_tests:
+          - not_null
+      - name: price_basis_code
+        description: Code describing the price basis used for the GDP measure.
+        data_tests:
+          - not_null
+      - name: price_basis_name
+        data_tests:
+          - not_null
+      - name: measure_code
+        description: Code identifying whether the observation represents an index, growth rate, or related GDP measure.
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values:
+                  - gra
+                  - aix
+                  - grq
+                  - grqa
+                  - qix
+      - name: measure_name
+      - name: dbt_scd_id
+        description: dbt snapshot SCD identifier for the observation version.
+        data_tests:
+          - not_null
+          - unique
+      - name: dbt_updated_at
+        description: Timestamp when dbt last updated the snapshot row.
+        data_tests:
+          - not_null
+      - name: dbt_valid_from
+        description: Timestamp from which the snapshot row is valid.
+        data_tests:
+          - not_null
+      - name: dbt_valid_to
+        description: Timestamp until which the snapshot row is valid. Null for the latest version.
+      - name: is_latest
+        description: Boolean flag indicating whether the row is the latest snapshot version.
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values:
+                  - true
+                  - false
+                quote: false
+
+  - name: fct_tax_benefit_observations
+    description: >
+      SCD type 2 fact table for tax and benefits observations from the ONS
+      effects of taxes and benefits on household income dataset.
+    columns:
+      - name: tax_benefit_observation_sk
+        description: Surrogate key generated from the source observation key.
+        data_tests:
+          - not_null
+      - name: source_observation_sk
+        description: Observation surrogate key from the upstream staging model.
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('stg_tax_benefits_statistics')
+                field: observation_sk
+      - name: observation_value
+        description: Numeric tax and benefits observation value.
+        data_tests:
+          - not_null
+      - name: time_period_sk
+        description: Surrogate key to dim_time_periods for the observation period.
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_time_periods')
+                field: time_period_sk
+      - name: time_period_type
+        description: Normalised time grain for the observation.
+        data_tests:
+          - not_null
+      - name: time_period_id
+        description: Source period identifier for the observation.
+        data_tests:
+          - not_null
+      - name: period_label
+        description: Source period label for the observation.
+        data_tests:
+          - not_null
+      - name: time_label
+        description: Human-readable source time label for the observation.
+        data_tests:
+          - not_null
+      - name: period_start_year
+        data_tests:
+          - not_null
+      - name: period_end_year
+        data_tests:
+          - not_null
+      - name: period_start_date
+        data_tests:
+          - not_null
+      - name: period_end_date
+        data_tests:
+          - not_null
+      - name: geography_code
+        description: ONS geography code for the observation. Local authority rows use administrative geography codes;
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values:
+                  - K02000001
+      - name: geography_sk
+        description: Surrogate key to dim_geographies for the observation geography.
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_geographies')
+                field: geography_sk
+      - name: geography_name
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values:
+                  - United Kingdom
+      - name: quintile_code
+        description: Code identifying the income quintile group.
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values:
+                  - 1st
+                  - 2nd
+                  - 3rd
+                  - 4th
+                  - 5th
+                  - all
+      - name: quintile_name
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values:
+                  - 1st
+                  - 2nd
+                  - 3rd
+                  - 4th
+                  - 5th
+                  - all
+      - name: summary_statistic_code
+        description: Code identifying the summary statistic, such as average or median.
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values:
+                  - mean
+                  - median
+      - name: summary_statistic_name
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values:
+                  - mean
+                  - median
+      - name: income_type_code
+        description: Code identifying the income type represented by the observation.
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values:
+                  - disposable
+                  - final
+                  - gross
+                  - original
+                  - post-tax
+      - name: income_type_name
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values:
+                  - Disposable
+                  - Final
+                  - Gross
+                  - Original
+                  - Post-tax
+      - name: deflation_basis_code
+        description: Code identifying whether and how the income value has been deflated.
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values:
+                  - deflated-value
+                  - undeflated-value
+      - name: deflation_basis_name
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values:
+                  - Deflated value
+                  - Undeflated value
+      - name: dbt_scd_id
+        description: dbt snapshot SCD identifier for the observation version.
+        data_tests:
+          - not_null
+          - unique
+      - name: dbt_updated_at
+        description: Timestamp when dbt last updated the snapshot row.
+        data_tests:
+          - not_null
+      - name: dbt_valid_from
+        description: Timestamp from which the snapshot row is valid.
+        data_tests:
+          - not_null
+      - name: dbt_valid_to
+        description: Timestamp until which the snapshot row is valid. Null for the latest version.
+      - name: is_latest
+        description: Boolean flag indicating whether the row is the latest snapshot version.
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values:
+                  - true
+                  - false
+                quote: false
