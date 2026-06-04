@@ -1,0 +1,50 @@
+seed_groups:
+  - group_id: data_marking
+    enabled: true
+    description: Reference data marking values used by wellbeing marts.
+    seeds:
+      - seed_data_marking_values_lookup
+    models:
+      - dim_data_marking
+    run_upstream_models: true
+
+  - group_id: nations
+    enabled: true
+    description: Nation lookup dimension.
+    seeds:
+      - seed_nation_lookup
+    models:
+      - dim_nations
+    run_upstream_models: true
+
+  - group_id: local_authorities
+    enabled: true
+    description: Local authority to region lookup dimension.
+    seeds:
+      - seed_local_authority_to_region_lookup
+    models:
+      - dim_local_authorities
+    run_upstream_models: true
+
+  - group_id: time_periods
+    enabled: true
+    description: Time period dimensions that must be refreshed together.
+    seeds:
+      - seed_time_periods_lookup
+    models:
+      - dim_time_periods
+      - dim_time_quarters
+    run_upstream_models: true
+
+  - group_id: geographies
+    enabled: true
+    description: Unified geography dimension built from lookup seeds and GDP staging models.
+    seeds:
+      - seed_nation_lookup
+      - seed_local_authority_to_region_lookup
+    models:
+      - dim_geographies
+    upstream_models:
+      - stg_regional_gdp_by_year
+      - stg_regional_gdp_by_quarter
+    run_upstream_models: true

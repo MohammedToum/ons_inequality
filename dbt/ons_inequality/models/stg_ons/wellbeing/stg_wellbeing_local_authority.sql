@@ -1,3 +1,13 @@
+{{
+    config(
+            materialized='table',
+            schema='stg_ons',
+            description="""
+                        Staging model for wellbeing observations from the ONS local authority dataset.
+                    """
+    )
+}}
+
 with source as (
 
     select *
@@ -91,5 +101,5 @@ final as (
 
 select *
 from final
-where start_year >= {{ var('start_year') }}
-  and end_year <= {{ var('end_year') }}
+where 1 = 1
+{{ optional_year_window('end_year') }}

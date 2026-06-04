@@ -1,3 +1,12 @@
+{{
+    config(
+        materialized='table',
+        schema='marts_ons',
+        description="""
+                    Dimensional model for time periods dimension, sourced from the int_time_periods intermediate model.
+                """
+    )
+}}
 select
     time_period_sk,
     time_period_type,

@@ -1,3 +1,14 @@
+{{
+    config(
+            materialized='view',
+            schema='int_ons',
+            description="""
+                        Integrated model for local authority district geographies from ONS geography lookup dataset.
+                    """
+    )
+}}
+
+
 with
     source as (
         select *

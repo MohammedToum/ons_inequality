@@ -1,3 +1,17 @@
+{{
+    config(
+            materialized='table',
+            schema='stg_ons',
+            description="""
+                        Staging model for tax and benefits observations from the ONS effects of taxes and benefits on household income dataset.
+                        Grain:
+                            One observation per geography, time period, quintile, summary statistic, and income type.
+                        Natural keys:
+                            geography_code/geography_name, time_period_type, time_period_id, period_label, time
+                    """
+    )
+}}
+
 with source as (
 
     select *
@@ -41,7 +55,7 @@ renamed as (
         cast(`Quintile` as string) as quintile_name,
 
         cast(`averages_and_percentiles` as string) as summary_statistic_code,
-        cast(`AveragesAndPercentiles` as string) as summary_statistic_name,
+        cast(`averages_and_percentiles` as string) as summary_statistic_name,
 
         cast(`income_type` as string) as income_type_code,
         cast(`Income` as string) as income_type_name,
@@ -62,7 +76,8 @@ final as (
             'geography_code',
             'quintile_code',
             'summary_statistic_code',
-            'income_type_code'
+            'income_type_code',
+            'deflation_basis_code'
         ]) }} as observation_sk,
 
         observation_value,
@@ -104,5 +119,5 @@ final as (
 
 select *
 from final
-where period_start_year >= {{ var('start_year') }}
-  and period_end_year <= {{ var('end_year') }}
+where 1 = 1
+{{ optional_year_window('period_end_year') }}

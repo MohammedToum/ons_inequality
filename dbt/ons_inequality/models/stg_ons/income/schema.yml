@@ -167,7 +167,8 @@ models:
                   [
                     "Quarterly growth rate",
                     "Quarterly index",
-                    "Quarterly growth rate compared to same quarter previous year",
+                    "Quarterly growth rate on previous quarter", 
+                    "Quarterly growth rate on same quarter of previous year"
                   ]
 
   - name: stg_regional_gdp_by_year

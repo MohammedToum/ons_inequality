@@ -1,0 +1,50 @@
+intermediate_currents:
+  - pipeline_id: regional_gdp
+    enabled: true
+    description: Current-state regional GDP observations.
+    model: int_regional_gdp_observations_current
+    source_staging_tables:
+      - stg_regional_gdp_by_year
+      - stg_regional_gdp_by_quarter
+    time_window: annual
+    vars: {}
+    batch_vars:
+      start_year: null
+      end_year: null
+
+  - pipeline_id: tax_benefits
+    enabled: true
+    description: Current-state tax and benefit observations.
+    model: int_tax_benefit_observations_current
+    source_staging_tables:
+      - stg_tax_benefits_statistics
+    time_window: annual
+    vars: {}
+    batch_vars:
+      start_year: null
+      end_year: null
+
+  - pipeline_id: wellbeing
+    enabled: true
+    description: Current-state wellbeing observations.
+    model: int_wellbeing_observations_current
+    source_staging_tables:
+      - stg_wellbeing_local_authority
+      - stg_wellbeing_quarterly
+    time_window: annual
+    vars: {}
+    batch_vars:
+      start_year: null
+      end_year: null
+
+  - pipeline_id: suicides
+    enabled: true
+    description: Current-state suicide observations.
+    model: int_suicide_observations_current
+    source_staging_tables:
+      - stg_suicides_in_the_uk
+    time_window: annual
+    vars: {}
+    batch_vars:
+      start_year: null
+      end_year: null

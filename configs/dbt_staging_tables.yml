@@ -1,0 +1,70 @@
+staging_tables:
+  - table_id: regional_gdp_by_quarter
+    enabled: true
+    description: Quarterly regional GDP staging table.
+    model: stg_regional_gdp_by_quarter
+    source_raw_table: raw_regional_gdp_by_quarter
+    time_window: quarterly
+    vars: {}
+    batch_vars:
+      start_year: null
+      start_quarter: null
+      end_year: null
+      end_quarter: null
+
+  - table_id: regional_gdp_by_year
+    enabled: true
+    description: Annual regional GDP staging table.
+    model: stg_regional_gdp_by_year
+    source_raw_table: raw_regional_gdp_by_year
+    time_window: annual
+    vars: {}
+    batch_vars:
+      start_year: null
+      end_year: null
+
+  - table_id: tax_benefits_statistics
+    enabled: true
+    description: Tax and benefits staging table with calendar and financial-year periods.
+    model: stg_tax_benefits_statistics
+    source_raw_table: raw_tax_benefits_statistics
+    time_window: annual
+    vars: {}
+    batch_vars:
+      start_year: null
+      end_year: null
+
+  - table_id: suicides_in_the_uk
+    enabled: true
+    description: Annual suicides staging table.
+    model: stg_suicides_in_the_uk
+    source_raw_table: raw_suicides_in_the_uk
+    time_window: annual
+    vars: {}
+    batch_vars:
+      start_year: null
+      end_year: null
+
+  - table_id: wellbeing_local_authority
+    enabled: true
+    description: Local authority wellbeing staging table with financial-year periods.
+    model: stg_wellbeing_local_authority
+    source_raw_table: raw_wellbeing_local_authority
+    time_window: annual
+    vars: {}
+    batch_vars:
+      start_year: null
+      end_year: null
+
+  - table_id: wellbeing_quarterly
+    enabled: true
+    description: Quarterly UK wellbeing staging table.
+    model: stg_wellbeing_quarterly
+    source_raw_table: raw_wellbeing_quarterly
+    time_window: quarterly
+    vars: {}
+    batch_vars:
+      start_year: null
+      start_quarter: null
+      end_year: null
+      end_quarter: null

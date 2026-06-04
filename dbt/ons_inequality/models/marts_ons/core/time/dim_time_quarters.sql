@@ -1,7 +1,6 @@
 {{
     config(
         materialized='table',
-        schema='dim_ons',
         description="""
             Dimension table of canonical calendar quarters used by quarterly
             ONS observation fact tables.

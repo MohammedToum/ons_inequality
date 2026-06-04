@@ -1,7 +1,6 @@
 {{
     config(
         materialized='table',
-        schema='fct_ons',
         description="""
             SCD type 2 fact table for wellbeing observations from the ONS local
             authority and quarterly wellbeing datasets.

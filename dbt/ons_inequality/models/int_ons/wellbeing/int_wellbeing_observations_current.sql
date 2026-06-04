@@ -71,11 +71,27 @@ unioned as (
 
     select *
     from wellbeing_local_authority
+    where start_year >= 2012
+      and end_year <= 2021
 
     union all
 
     select *
     from wellbeing_quarterly
+    where (
+        calendar_year > 2012
+        or (
+            calendar_year = 2012
+            and quarter >= 1
+        )
+    )
+    and (
+        calendar_year < 2021
+        or (
+            calendar_year = 2021
+            and quarter <= 4
+        )
+    )
 
 )
 

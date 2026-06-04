@@ -1,7 +1,6 @@
 {{
     config(
         materialized='table',
-        schema='dim_ons',
         description="""
             Unified geography dimension for ONS fact tables across local
             authority, region, nation, United Kingdom, and GDP NUTS geographies.
@@ -124,6 +123,10 @@ final as (
         geography_code,
         geography_name,
         geography_level,
+        case
+            when parent_region_code is not null
+            then {{ dbt_utils.generate_surrogate_key(['parent_region_code']) }}
+        end as parent_region_sk,
         parent_region_code,
         parent_region_name,
         parent_nation_code,

@@ -1,3 +1,14 @@
+{{
+    config(
+            materialized='table',
+            schema='stg_ons',
+            description="""
+                        Staging model for suicide observations from the ONS suicides in the UK dataset.
+                    """
+    )
+}}
+
+
 with source as (
 
     select *
@@ -40,4 +51,5 @@ final as (
 
 select *
 from final
-where calendar_year between {{ var('start_year') }} and {{ var('end_year') }}
+where 1 = 1
+{{ optional_year_window('calendar_year') }}

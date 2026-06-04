@@ -1,3 +1,12 @@
+{{
+    config(
+        materialized='view',
+        schema='int_ons',
+        description="""
+                    Intermediate model for nations dimension, sourced from the seed_nation_lookup table.
+                """
+    )
+}}
 with
     source as (
         select *
@@ -6,7 +15,7 @@ with
 renamed AS (
     select
         `Nation` as nation_name,
-        `Nation Code` as nation_code
+        `nation_code` as nation_code
     from source
 ),
 final as (
@@ -17,3 +26,6 @@ final as (
     from renamed
     where nation_code is not null
 )
+
+select *
+from final

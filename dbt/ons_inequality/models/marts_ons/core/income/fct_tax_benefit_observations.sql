@@ -1,7 +1,6 @@
 {{
     config(
         materialized='table',
-        schema='fct_ons',
         description="""
             SCD type 2 fact table for tax and benefits observations from the
             ONS effects of taxes and benefits on household income dataset.

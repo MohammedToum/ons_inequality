@@ -1,0 +1,63 @@
+fact_marts:
+  - fact_id: regional_gdp
+    enabled: true
+    description: SCD type 2 regional GDP observation fact mart.
+    final_model: fct_regional_gdp_observations
+    snapshot: snap_fct_regional_gdp_observations
+    upstream_selectors:
+      - +int_regional_gdp_observations_current
+    dimension_dependencies:
+      - dim_time_periods
+      - dim_time_quarters
+      - dim_geographies
+    vars: {}
+    batch_vars:
+      start_year: null
+      end_year: null
+
+  - fact_id: tax_benefits
+    enabled: true
+    description: SCD type 2 tax and benefit observation fact mart.
+    final_model: fct_tax_benefit_observations
+    snapshot: snap_fct_tax_benefit_observations
+    upstream_selectors:
+      - +int_tax_benefit_observations_current
+    dimension_dependencies:
+      - dim_time_periods
+      - dim_geographies
+    vars: {}
+    batch_vars:
+      start_year: null
+      end_year: null
+
+  - fact_id: wellbeing
+    enabled: true
+    description: SCD type 2 wellbeing observation fact mart.
+    final_model: fct_wellbeing_observations
+    snapshot: snap_fct_wellbeing_observations
+    upstream_selectors:
+      - +int_wellbeing_observations_current
+    dimension_dependencies:
+      - dim_time_periods
+      - dim_time_quarters
+      - dim_geographies
+      - dim_data_marking
+    vars: {}
+    batch_vars:
+      start_year: null
+      end_year: null
+
+  - fact_id: suicides
+    enabled: true
+    description: SCD type 2 suicide observation fact mart.
+    final_model: fct_suicide_observations
+    snapshot: snap_fct_suicide_observations
+    upstream_selectors:
+      - +int_suicide_observations_current
+    dimension_dependencies:
+      - dim_time_periods
+      - dim_geographies
+    vars: {}
+    batch_vars:
+      start_year: null
+      end_year: null

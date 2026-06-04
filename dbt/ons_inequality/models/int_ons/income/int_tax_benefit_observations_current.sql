@@ -33,6 +33,8 @@ with tax_benefit_observations as (
         deflation_basis_code,
         deflation_basis_name
     from {{ ref('stg_tax_benefits_statistics') }}
+    where period_start_year >= 2012
+      and period_end_year <= 2021
 
 )
 

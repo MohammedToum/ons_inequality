@@ -1,6 +1,6 @@
 {{
     config(
-            materialized='view',
+            materialized='table',
             schema='stg_ons',
             description="""
                         Staging model for yearly regional GDP observations from ONS.
@@ -47,7 +47,7 @@ renamed as (
 
         safe_cast(`calendar_years` as int64) as calendar_year,
         cast(`Time` as string) as time_label,
-        `Annual` as time_grain,
+        'annual' as time_grain,
 
         cast(`nuts` as string) as region_code,
         cast(`Geography` as string) as region_name,
@@ -107,3 +107,5 @@ final as (
 
 select *
 from final
+where 1 = 1
+{{ optional_year_window('calendar_year') }}

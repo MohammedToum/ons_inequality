@@ -21,6 +21,7 @@ with suicide_observations as (
         geography_code,
         geography_name
     from {{ ref('stg_suicides_in_the_uk') }}
+    where calendar_year between 2012 and 2021
 
 )
 
@@ -35,5 +36,8 @@ select
     time_label,
     calendar_year,
     geography_code,
-    geography_name
+    geography_name,
+    ons_geo.region_code,
+    ons_geo.region_name
 from suicide_observations
+left join {{ ref('int_local_authority_districts') }} ons_geo on suicide_observations.geography_code = ons_geo.local_authority_code 

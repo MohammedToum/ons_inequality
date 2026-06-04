@@ -1,3 +1,13 @@
+{{
+    config(
+        materialized='table',
+        schema='marts_ons',
+        description="""
+                    Dimensional model for local authority districts dimension, sourced from the seed_local_authority_district_lookup table.
+                """
+    )
+}}
+
 select 
     local_authority_sk,
     local_authority_code,

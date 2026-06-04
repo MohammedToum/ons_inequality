@@ -1,0 +1,161 @@
+version: 1
+
+defaults:
+  start_year: 2012
+  start_quarter: 1
+  end_year: 2021
+  end_quarter: 4
+
+batch_templates:
+  annual_years: &annual_years
+    - batch_id: "2012"
+      vars:
+        start_year: 2012
+        end_year: 2012
+    - batch_id: "2013"
+      vars:
+        start_year: 2013
+        end_year: 2013
+    - batch_id: "2014"
+      vars:
+        start_year: 2014
+        end_year: 2014
+    - batch_id: "2015"
+      vars:
+        start_year: 2015
+        end_year: 2015
+    - batch_id: "2016"
+      vars:
+        start_year: 2016
+        end_year: 2016
+    - batch_id: "2017"
+      vars:
+        start_year: 2017
+        end_year: 2017
+    - batch_id: "2018"
+      vars:
+        start_year: 2018
+        end_year: 2018
+    - batch_id: "2019"
+      vars:
+        start_year: 2019
+        end_year: 2019
+    - batch_id: "2020"
+      vars:
+        start_year: 2020
+        end_year: 2020
+    - batch_id: "2021"
+      vars:
+        start_year: 2021
+        end_year: 2021
+
+  quarterly_years: &quarterly_years
+    - batch_id: "2012_q1_q4"
+      vars:
+        start_year: 2012
+        start_quarter: 1
+        end_year: 2012
+        end_quarter: 4
+    - batch_id: "2013_q1_q4"
+      vars:
+        start_year: 2013
+        start_quarter: 1
+        end_year: 2013
+        end_quarter: 4
+    - batch_id: "2014_q1_q4"
+      vars:
+        start_year: 2014
+        start_quarter: 1
+        end_year: 2014
+        end_quarter: 4
+    - batch_id: "2015_q1_q4"
+      vars:
+        start_year: 2015
+        start_quarter: 1
+        end_year: 2015
+        end_quarter: 4
+    - batch_id: "2016_q1_q4"
+      vars:
+        start_year: 2016
+        start_quarter: 1
+        end_year: 2016
+        end_quarter: 4
+    - batch_id: "2017_q1_q4"
+      vars:
+        start_year: 2017
+        start_quarter: 1
+        end_year: 2017
+        end_quarter: 4
+    - batch_id: "2018_q1_q4"
+      vars:
+        start_year: 2018
+        start_quarter: 1
+        end_year: 2018
+        end_quarter: 4
+    - batch_id: "2019_q1_q4"
+      vars:
+        start_year: 2019
+        start_quarter: 1
+        end_year: 2019
+        end_quarter: 4
+    - batch_id: "2020_q1_q4"
+      vars:
+        start_year: 2020
+        start_quarter: 1
+        end_year: 2020
+        end_quarter: 4
+    - batch_id: "2021_q1_q4"
+      vars:
+        start_year: 2021
+        start_quarter: 1
+        end_year: 2021
+        end_quarter: 4
+
+pipelines:
+  staging_tables:
+    regional_gdp_by_quarter:
+      time_window: quarterly
+      batches: *quarterly_years
+    regional_gdp_by_year:
+      time_window: annual
+      batches: *annual_years
+    tax_benefits_statistics:
+      time_window: annual
+      batches: *annual_years
+    suicides_in_the_uk:
+      time_window: annual
+      batches: *annual_years
+    wellbeing_local_authority:
+      time_window: annual
+      batches: *annual_years
+    wellbeing_quarterly:
+      time_window: quarterly
+      batches: *quarterly_years
+
+  intermediate_currents:
+    regional_gdp:
+      time_window: annual
+      batches: *annual_years
+    tax_benefits:
+      time_window: annual
+      batches: *annual_years
+    wellbeing:
+      time_window: annual
+      batches: *annual_years
+    suicides:
+      time_window: annual
+      batches: *annual_years
+
+  fact_marts:
+    regional_gdp:
+      time_window: annual
+      batches: *annual_years
+    tax_benefits:
+      time_window: annual
+      batches: *annual_years
+    wellbeing:
+      time_window: annual
+      batches: *annual_years
+    suicides:
+      time_window: annual
+      batches: *annual_years

@@ -1,7 +1,6 @@
 {{
     config(
         materialized='table',
-        schema='fct_ons',
         description="""
             SCD type 2 fact table for suicide observations from the ONS
             suicides in the UK dataset.

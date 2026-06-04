@@ -18,7 +18,7 @@ models:
   ons_inequality:
     stg_ons:
       +schema: stg_ons
-      +materialized: view
+      +materialized: table
       +tags: ["staging", "ons"]
 
       wellbeing:

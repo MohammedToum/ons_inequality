@@ -1,7 +1,6 @@
 {{
     config(
         materialized='table',
-        schema='fct_ons',
         description="""
             SCD type 2 fact table for regional GDP observations from ONS annual
             and quarterly datasets.

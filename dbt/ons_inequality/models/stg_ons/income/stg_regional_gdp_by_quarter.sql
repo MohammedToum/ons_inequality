@@ -1,6 +1,6 @@
 {{
     config(
-            materialized='view',
+            materialized='table',
             schema='stg_ons',
             description="""
                         Staging model for quarterly regional GDP observations from ONS.
@@ -47,7 +47,7 @@ renamed as (
 
         cast(`yyyy_qq` as string) as quarter_id,
         cast(`Time` as string) as time_label,
-        `Quarterly` as time_grain,
+        'quarterly' as time_grain,
 
         safe_cast(substr(`yyyy_qq`, 1, 4) as int64) as year,
         safe_cast(regexp_extract(`yyyy_qq`, r'q([1-4])') as int64) as quarter,
@@ -112,3 +112,5 @@ final as (
 
 select *
 from final
+where 1 = 1
+{{ optional_quarter_window('year', 'quarter') }}
